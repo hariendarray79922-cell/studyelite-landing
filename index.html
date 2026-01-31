@@ -2,34 +2,163 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Secure Download</title>
+<title>StudyElite Download</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+  font-family: system-ui, sans-serif;
+  background:#f4f6fb;
+  margin:0;
+  padding:20px;
+  text-align:center;
+}
+.step{
+  display:none;
+}
+.step.active{
+  display:block;
+}
+.top{
+  background:#fff;
+  padding:10px 16px;
+  border-radius:20px;
+  display:inline-block;
+  margin-bottom:15px;
+  font-weight:600;
+}
+.ad{
+  margin:20px 0;
+}
+.timer{
+  background:#6366f1;
+  color:#fff;
+  padding:12px;
+  border-radius:25px;
+  margin:20px auto;
+  width:90%;
+}
+.warn{
+  font-size:14px;
+  margin-bottom:15px;
+}
+button{
+  padding:14px;
+  width:90%;
+  max-width:360px;
+  border:none;
+  border-radius:25px;
+  background:#9ca3af;
+  color:white;
+  font-size:16px;
+}
+button.active{
+  background:#4f46e5;
+  cursor:pointer;
+}
+</style>
 </head>
+
 <body>
 
-<div class="card">
+<!-- STEP 1 -->
+<div class="step active" id="step1">
+  <div class="top">You are on Step 1/5</div>
 
-  <div class="step">
-    You are on Step <span id="stepNo">1</span>/3
+  <div class="ad">
+    <!-- 🔥 ADS CODE HERE -->
   </div>
 
-  <!-- BANNER / VIDEO / NATIVE ADS -->
-  <div class="ad-box">
-    <p>🔔 Advertisement</p>
-    <!-- Monetag banner / native / video code yaha paste kar sakte ho -->
-  </div>
+  <div class="timer" id="timer1">Please wait 45 seconds…</div>
+  <div class="warn">⚠️ Scroll down and click on Continue</div>
 
-  <div class="timer" id="timer">
-    Please wait 15 seconds...
-  </div>
-
-  <button id="actionBtn" disabled>
-    Continue
-  </button>
-
+  <button id="btn1" disabled onclick="nextStep(2)">Continue</button>
 </div>
 
-<script src="script.js"></script>
+<!-- STEP 2 -->
+<div class="step" id="step2">
+  <div class="top">You are on Step 2/5</div>
+
+  <div class="ad"><!-- ADS --></div>
+
+  <div class="timer" id="timer2">Please wait 45 seconds…</div>
+  <div class="warn">⚠️ Scroll down and click on Continue</div>
+
+  <button id="btn2" disabled onclick="nextStep(3)">Continue</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="step" id="step3">
+  <div class="top">You are on Step 3/5</div>
+
+  <div class="ad"><!-- ADS --></div>
+
+  <div class="timer" id="timer3">Please wait 45 seconds…</div>
+  <div class="warn">⚠️ Scroll down and click on Continue</div>
+
+  <button id="btn3" disabled onclick="nextStep(4)">Continue</button>
+</div>
+
+<!-- STEP 4 -->
+<div class="step" id="step4">
+  <div class="top">You are on Step 4/5</div>
+
+  <div class="ad"><!-- ADS --></div>
+
+  <div class="timer" id="timer4">Please wait 45 seconds…</div>
+  <div class="warn">⚠️ Scroll down and click on Continue</div>
+
+  <button id="btn4" disabled onclick="nextStep(5)">Continue</button>
+</div>
+
+<!-- STEP 5 -->
+<div class="step" id="step5">
+  <div class="top">Final Step 5/5</div>
+
+  <div class="ad"><!-- FINAL ADS --></div>
+
+  <div class="timer" id="timer5">Please wait 45 seconds…</div>
+
+  <button id="btn5" disabled onclick="downloadAPK()">
+    Download APK
+  </button>
+</div>
+
+<script>
+let current = 1;
+
+function startTimer(step){
+  let time = 45;
+  const timer = document.getElementById("timer"+step);
+  const btn = document.getElementById("btn"+step);
+
+  const x = setInterval(()=>{
+    time--;
+    timer.innerText = "Please wait "+time+" seconds…";
+
+    if(time<=0){
+      clearInterval(x);
+      timer.innerText = "Verified ✓";
+      btn.disabled = false;
+      btn.classList.add("active");
+    }
+  },1000);
+}
+
+function nextStep(n){
+  document.getElementById("step"+current).classList.remove("active");
+  document.getElementById("step"+n).classList.add("active");
+  current = n;
+  startTimer(n);
+}
+
+function downloadAPK(){
+  window.location.href =
+  "https://YOUR-APK-DIRECT-LINK.apk";
+}
+
+startTimer(1);
+</script>
+
 </body>
 </html>
