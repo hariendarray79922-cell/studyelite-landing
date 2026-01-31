@@ -1,30 +1,50 @@
-let timeLeft = 10;
-const btn = document.getElementById("downloadBtn");
+let step = 1;
+let time = 15;
 
-// 🔗 Monetag Direct Link
+const btn = document.getElementById("actionBtn");
+const timer = document.getElementById("timer");
+const stepNo = document.getElementById("stepNo");
+
+// 🔴 Monetag Direct Link (yaha apna link paste karo)
 const AD_LINK = "https://otieu.com/4/10548540";
 
-// 🔗 APK Direct Download Link
-const APK_LINK = "https://example.com/studyelite.apk"; // <-- apna real APK link yaha
+// 🔴 APK Direct Download Link (GitHub Release / CDN)
+const APK_LINK = "https://example.com/app.apk";
 
-const timer = setInterval(() => {
-  timeLeft--;
-  btn.innerText = `Download APK (${timeLeft})`;
+function startTimer(){
+  btn.disabled = true;
+  btn.classList.remove("active");
+  time = 15;
 
-  if (timeLeft <= 0) {
-    clearInterval(timer);
-    btn.innerText = "Download APK";
-    btn.disabled = false;
-    btn.classList.add("active");
+  timer.innerText = `Please wait ${time} seconds...`;
 
-    btn.onclick = () => {
-      // 1️⃣ Ad open (new tab)
-      window.open(AD_LINK, "_blank");
+  const interval = setInterval(() => {
+    time--;
+    timer.innerText = `Please wait ${time} seconds...`;
 
-      // 2️⃣ APK download (same tab)
-      setTimeout(() => {
-        window.location.href = APK_LINK;
-      }, 800);
-    };
+    if(time <= 0){
+      clearInterval(interval);
+      timer.innerText = "Click Continue to proceed";
+      btn.disabled = false;
+      btn.classList.add("active");
+    }
+  },1000);
+}
+
+btn.onclick = () => {
+
+  // ✅ BUTTON CLICK → AD POP
+  window.open(AD_LINK, "_blank");
+
+  if(step < 3){
+    step++;
+    stepNo.innerText = step;
+    startTimer();
+  }else{
+    // ✅ FINAL STEP → APK DOWNLOAD
+    window.location.href = APK_LINK;
   }
-}, 1000);
+};
+
+// Start first lock
+startTimer();
