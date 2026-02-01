@@ -134,9 +134,12 @@ button.active{
 <script>
 let current = 1;
 
-// 🔴 CHANGE THESE TWO
-const MONETAG_DIRECT_LINK = "https://otieu.com/4/XXXXXXX";
+const MONETAG_DIRECT_LINK = "https://otieu.com/4/10548540";
 const APK_LINK = "https://YOUR-APK-DIRECT-LINK.apk";
+
+function fireAd(){
+  window.open(MONETAG_DIRECT_LINK, "_blank");
+}
 
 function startTimer(step){
   let time = 45;
@@ -156,7 +159,7 @@ function startTimer(step){
 }
 
 function nextStep(n){
-  window.open(MONETAG_DIRECT_LINK, "_blank"); // 🔥 AD FIRE
+  fireAd(); // 🔥 Monetag earning hit
   document.getElementById("step"+current).classList.remove("active");
   document.getElementById("step"+n).classList.add("active");
   current = n;
@@ -164,14 +167,13 @@ function nextStep(n){
 }
 
 function downloadAPK(){
-  window.open(MONETAG_DIRECT_LINK, "_blank"); // 🔥 FINAL AD
+  fireAd(); // 🔥 final earning hit
   setTimeout(()=>{
     window.location.href = APK_LINK;
-  },1200);
+  },1500);
 }
 
 startTimer(1);
 </script>
-
 </body>
 </html>
