@@ -25,8 +25,16 @@ body{
   font-weight:600;
 }
 
-.ad{
-  margin:20px 0;
+.ad-box{
+  background:#ffffff;
+  border:2px dashed #c7c7c7;
+  border-radius:12px;
+  padding:15px;
+  margin:20px auto;
+  width:95%;
+  max-width:400px;
+  color:#444;
+  font-size:14px;
 }
 
 .timer{
@@ -63,15 +71,17 @@ button.active{
 
 <body>
 
-<!-- 🔥 HOME / GLOBAL ADS (PAGE LOAD) -->
-<div class="ad">
-  <!-- 🔥 PASTE YOUR MAIN ADS CODE HERE -->
+<!-- 🔥 HOME ADS BOX -->
+<div class="ad-box">
+  🔥 Advertisement  
+  <br><br>
+  <small>Ads help us provide free downloads</small>
 </div>
 
 <!-- STEP 1 -->
 <div class="step active" id="step1">
   <div class="top">You are on Step 1/6</div>
-  <div class="ad"><!-- ADS STEP 1 --></div>
+  <div class="ad-box">📢 Sponsored Content</div>
   <div class="timer" id="timer1">Please wait 45 seconds…</div>
   <div class="warn">⚠️ Scroll down and click on Continue</div>
   <button id="btn1" disabled onclick="nextStep(2)">Continue</button>
@@ -80,7 +90,7 @@ button.active{
 <!-- STEP 2 -->
 <div class="step" id="step2">
   <div class="top">You are on Step 2/6</div>
-  <div class="ad"><!-- ADS STEP 2 --></div>
+  <div class="ad-box">📢 Sponsored Content</div>
   <div class="timer" id="timer2">Please wait 45 seconds…</div>
   <div class="warn">⚠️ Scroll down and click on Continue</div>
   <button id="btn2" disabled onclick="nextStep(3)">Continue</button>
@@ -89,7 +99,7 @@ button.active{
 <!-- STEP 3 -->
 <div class="step" id="step3">
   <div class="top">You are on Step 3/6</div>
-  <div class="ad"><!-- ADS STEP 3 --></div>
+  <div class="ad-box">📢 Sponsored Content</div>
   <div class="timer" id="timer3">Please wait 45 seconds…</div>
   <div class="warn">⚠️ Scroll down and click on Continue</div>
   <button id="btn3" disabled onclick="nextStep(4)">Continue</button>
@@ -98,7 +108,7 @@ button.active{
 <!-- STEP 4 -->
 <div class="step" id="step4">
   <div class="top">You are on Step 4/6</div>
-  <div class="ad"><!-- ADS STEP 4 --></div>
+  <div class="ad-box">📢 Sponsored Content</div>
   <div class="timer" id="timer4">Please wait 45 seconds…</div>
   <div class="warn">⚠️ Scroll down and click on Continue</div>
   <button id="btn4" disabled onclick="nextStep(5)">Continue</button>
@@ -107,7 +117,7 @@ button.active{
 <!-- STEP 5 -->
 <div class="step" id="step5">
   <div class="top">You are on Step 5/6</div>
-  <div class="ad"><!-- ADS STEP 5 --></div>
+  <div class="ad-box">📢 Sponsored Content</div>
   <div class="timer" id="timer5">Please wait 45 seconds…</div>
   <div class="warn">⚠️ Scroll down and click on Continue</div>
   <button id="btn5" disabled onclick="nextStep(6)">Continue</button>
@@ -116,13 +126,17 @@ button.active{
 <!-- STEP 6 -->
 <div class="step" id="step6">
   <div class="top">Final Step 6/6</div>
-  <div class="ad"><!-- FINAL STRONG ADS --></div>
+  <div class="ad-box">🔥 Final Advertisement</div>
   <div class="timer" id="timer6">Please wait 45 seconds…</div>
   <button id="btn6" disabled onclick="downloadAPK()">Download APK</button>
 </div>
 
 <script>
 let current = 1;
+
+// 🔴 CHANGE THESE TWO
+const MONETAG_DIRECT_LINK = "https://otieu.com/4/XXXXXXX";
+const APK_LINK = "https://YOUR-APK-DIRECT-LINK.apk";
 
 function startTimer(step){
   let time = 45;
@@ -142,6 +156,7 @@ function startTimer(step){
 }
 
 function nextStep(n){
+  window.open(MONETAG_DIRECT_LINK, "_blank"); // 🔥 AD FIRE
   document.getElementById("step"+current).classList.remove("active");
   document.getElementById("step"+n).classList.add("active");
   current = n;
@@ -149,7 +164,10 @@ function nextStep(n){
 }
 
 function downloadAPK(){
-  window.location.href = "https://YOUR-APK-DIRECT-LINK.apk";
+  window.open(MONETAG_DIRECT_LINK, "_blank"); // 🔥 FINAL AD
+  setTimeout(()=>{
+    window.location.href = APK_LINK;
+  },1200);
 }
 
 startTimer(1);
