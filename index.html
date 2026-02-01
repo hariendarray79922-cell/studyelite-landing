@@ -1,794 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Stark | Download</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .container {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        
-        /* Header */
-        .header {
-            background: linear-gradient(90deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
-            border-bottom: 3px solid #3730a3;
-        }
-        
-        .header h1 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .header p {
-            font-size: 12px;
-            opacity: 0.9;
-        }
-        
-        /* Step Indicator */
-        .step-indicator {
-            background: #f1f5f9;
-            padding: 12px 20px;
-            text-align: center;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .step-text {
-            color: #4f46e5;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        /* Main Content */
-        .content {
-            padding: 0 20px;
-        }
-        
-        /* Ad Box Styles */
-        .ad-box {
-            background: #ffffff;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        
-        .ad-label {
-            background: #fbbf24;
-            color: #78350f;
-            font-size: 10px;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 4px;
-            position: absolute;
-            top: -8px;
-            left: 15px;
-        }
-        
-        .ad-title {
-            color: #1e293b;
-            font-size: 22px;
-            font-weight: 700;
-            margin: 10px 0 5px 0;
-            line-height: 1.2;
-        }
-        
-        .ad-subtitle {
-            color: #dc2626;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .ad-feature {
-            background: #fef3c7;
-            color: #92400e;
-            padding: 8px 12px;
-            border-radius: 6px;
-            margin: 10px 0;
-            font-size: 13px;
-            font-weight: 500;
-        }
-        
-        .ad-offer {
-            background: linear-gradient(90deg, #10b981, #059669);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            font-weight: 600;
-        }
-        
-        .ad-cta {
-            background: linear-gradient(90deg, #dc2626, #b91c1c);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            margin: 15px 0;
-            cursor: pointer;
-            width: 100%;
-            display: block;
-        }
-        
-        /* Timer Section */
-        .timer-section {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
-            border: 1px dashed #cbd5e1;
-        }
-        
-        .timer-title {
-            color: #4f46e5;
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-        
-        .timer {
-            font-size: 28px;
-            font-weight: 700;
-            color: #dc2626;
-            margin: 10px 0;
-        }
-        
-        .timer-note {
-            color: #64748b;
-            font-size: 12px;
-            margin-top: 10px;
-        }
-        
-        /* Scroll Down Section */
-        .scroll-section {
-            background: #fef3c7;
-            border: 1px solid #fbbf24;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: center;
-        }
-        
-        .scroll-text {
-            color: #92400e;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        .scroll-icon {
-            color: #dc2626;
-            font-size: 24px;
-            margin-top: 10px;
-            animation: bounce 1.5s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        /* Multiple Ads Section */
-        .multiple-ads {
-            background: #f8fafc;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .ad-item {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .ad-number {
-            background: #4f46e5;
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 600;
-            margin-right: 12px;
-        }
-        
-        .ad-content {
-            flex: 1;
-        }
-        
-        .ad-content h4 {
-            font-size: 14px;
-            color: #1e293b;
-            margin-bottom: 3px;
-        }
-        
-        .ad-content p {
-            font-size: 12px;
-            color: #64748b;
-        }
-        
-        /* Continue Button */
-        .continue-btn {
-            background: linear-gradient(90deg, #10b981, #059669);
-            color: white;
-            border: none;
-            padding: 16px;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            margin: 20px 0;
-            cursor: pointer;
-            width: 100%;
-            display: block;
-            text-align: center;
-            text-decoration: none;
-        }
-        
-        .continue-btn:disabled {
-            background: #94a3b8;
-            cursor: not-allowed;
-        }
-        
-        /* Footer */
-        .footer {
-            background: #1e293b;
-            color: #cbd5e1;
-            padding: 15px 20px;
-            text-align: center;
-            font-size: 11px;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 10px 0;
-        }
-        
-        .footer-links a {
-            color: #60a5fa;
-            text-decoration: none;
-        }
-        
-        .copyright {
-            color: #94a3b8;
-            margin-top: 10px;
-            font-size: 10px;
-        }
-        
-        /* Hidden Class */
-        .hidden {
-            display: none;
-        }
-        
-        /* Step Content */
-        .step-content {
-            display: none;
-        }
-        
-        .step-content.active {
-            display: block;
-        }
-        
-        /* Download Section */
-        .download-section {
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 25px;
-            border-radius: 12px;
-            color: white;
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        .download-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-        
-        .download-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        
-        .download-btn {
-            background: white;
-            color: #059669;
-            border: none;
-            padding: 16px 30px;
-            border-radius: 25px;
-            font-size: 18px;
-            font-weight: 700;
-            margin: 20px 0;
-            cursor: pointer;
-            width: 100%;
-            display: block;
-            text-decoration: none;
-        }
-        
-        /* Verification Box */
-        .verify-box {
-            background: #f0f9ff;
-            border: 2px solid #0ea5e9;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: center;
-        }
-        
-        .verify-title {
-            color: #0369a1;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 400px) {
-            .content {
-                padding: 0 15px;
-            }
-            
-            .ad-title {
-                font-size: 20px;
-            }
-            
-            .timer {
-                font-size: 24px;
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>Study Stark</h1>
-            <p>BLOG | Premium Content Access</p>
-        </div>
-        
-        <!-- Step Indicator -->
-        <div class="step-indicator">
-            <div class="step-text" id="stepText">You are On Step 1/6</div>
-        </div>
-        
-        <!-- Step 1 Content -->
-        <div class="step-content active" id="step1">
-            <div class="content">
-                <div class="ad-box">
-                    <div class="ad-label">ADVERTISEMENT</div>
-                    <h2 class="ad-title">INDIA'S MOST POWERFUL 160cc</h2>
-                    <div class="ad-subtitle">NOW ₹1.13L</div>
-                    <div class="ad-feature">TVS RTR SERIES - Racing ON Roads</div>
-                    <div class="ad-offer">
-                        CELEBRATORY OFFER<br>
-                        2YRS | 2,000 L/4,000 KM
-                    </div>
-                    <button class="ad-cta">TEST RIDE TODAY</button>
-                </div>
-                
-                <div class="timer-section">
-                    <div class="timer-title">PLEASE WAIT <span id="timer1Value">11</span> SECONDS...</div>
-                    <div class="timer" id="timer1Display">00:11</div>
-                    <div class="timer-note">Please wait for verification to complete</div>
-                </div>
-                
-                <button class="continue-btn" id="continueBtn1" disabled onclick="nextStep(2)">
-                    Continue <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Step 2 Content -->
-        <div class="step-content" id="step2">
-            <div class="content">
-                <div class="ad-box">
-                    <div class="ad-label">SPONSORED</div>
-                    <h2 class="ad-title">INDIA'S MOST POWERFUL 160cc</h2>
-                    <div class="ad-subtitle">NOW ₹1.13L</div>
-                    <div class="ad-feature">TVS RTR SERIES - Racing ON Roads</div>
-                    <div class="ad-offer">
-                        CELEBRATORY OFFER<br>
-                        2YRS | 2,000 L/4,000 KM
-                    </div>
-                </div>
-                
-                <div class="verify-box">
-                    <div class="verify-title">VERIFY NOW</div>
-                    <div class="timer" id="timer2Display">00:09</div>
-                    <div class="timer-note">Please wait for verification to complete</div>
-                </div>
-                
-                <div class="scroll-section">
-                    <div class="scroll-text">Scroll Down and Click On Continue</div>
-                    <div class="scroll-icon">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                </div>
-                
-                <div class="multiple-ads" id="scrollableAds2">
-                    <!-- Ads will be generated by JavaScript -->
-                </div>
-                
-                <button class="continue-btn" id="continueBtn2" disabled onclick="nextStep(3)">
-                    Continue <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Step 3 Content -->
-        <div class="step-content" id="step3">
-            <div class="content">
-                <div class="ad-box">
-                    <div class="ad-label">ADVERTISEMENT</div>
-                    <h2 class="ad-title">INDIA'S MOST POWERFUL 160cc</h2>
-                    <div class="ad-subtitle">NOW ₹1.13L</div>
-                    <div class="ad-feature">TVS RTR SERIES - Racing ON Unleashed</div>
-                    <div class="ad-offer">
-                        CE CERTIFIED OFFER<br>
-                        20% DISCOUNT ON ALL RACING PRODUCTS
-                    </div>
-                </div>
-                
-                <div class="timer-section">
-                    <div class="timer-title">Page 2/6 - Wait 15 seconds</div>
-                    <div class="timer" id="timer3Display">00:15</div>
-                    <div class="timer-note">Reward in 11s | ad to support us!</div>
-                </div>
-                
-                <div class="scroll-section">
-                    <div class="scroll-text">Scroll down for more content</div>
-                    <div class="scroll-icon">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                </div>
-                
-                <div class="multiple-ads" id="scrollableAds3">
-                    <!-- Ads will be generated by JavaScript -->
-                </div>
-                
-                <button class="continue-btn" id="continueBtn3" disabled onclick="nextStep(4)">
-                    Continue <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Step 4 Content -->
-        <div class="step-content" id="step4">
-            <div class="content">
-                <div class="ad-box">
-                    <div class="ad-label">SPONSORED CONTENT</div>
-                    <h2 class="ad-title">STREAMING GAMING AND SAFE INTERNET USAGE</h2>
-                    <div class="ad-feature">Complete Guide for 2025</div>
-                </div>
-                
-                <div class="timer-section">
-                    <div class="timer-title">PLEASE WAIT <span id="timer4Value">9</span> SECONDS...</div>
-                    <div class="timer" id="timer4Display">00:09</div>
-                    <div class="timer-note">Verification in progress</div>
-                </div>
-                
-                <div style="text-align: center; margin: 20px 0;">
-                    <div style="display: inline-flex; gap: 10px; background: #f1f5f9; padding: 8px 15px; border-radius: 20px;">
-                        <span style="color: #4f46e5; font-weight: 600;">1</span>
-                        <span>2</span>
-                        <span>></span>
-                    </div>
-                </div>
-                
-                <button class="continue-btn" id="continueBtn4" disabled onclick="nextStep(5)">
-                    Continue <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Step 5 Content -->
-        <div class="step-content" id="step5">
-            <div class="content">
-                <div class="ad-box">
-                    <div class="ad-label">FINAL ADVERTISEMENT</div>
-                    <h2 class="ad-title">BEST IDENTITY THEFT PROTECTION SERVICES</h2>
-                    <div class="ad-subtitle">IN INDIA 2025</div>
-                    <div class="ad-feature">Top Rated Security Solutions</div>
-                    <div class="ad-offer">
-                        SPECIAL OFFER<br>
-                        30% DISCOUNT FOR LIMITED TIME
-                    </div>
-                </div>
-                
-                <div class="timer-section">
-                    <div class="timer-title">FINAL VERIFICATION</div>
-                    <div class="timer" id="timer5Display">00:12</div>
-                    <div class="timer-note">Almost there! Last verification step</div>
-                </div>
-                
-                <div class="scroll-section">
-                    <div class="scroll-text">Scroll down for final continue button</div>
-                    <div class="scroll-icon">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                </div>
-                
-                <div class="multiple-ads" id="scrollableAds5">
-                    <!-- Ads will be generated by JavaScript -->
-                </div>
-                
-                <button class="continue-btn" id="continueBtn5" disabled onclick="nextStep(6)">
-                    Continue <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Step 6 Content (Download) -->
-        <div class="step-content" id="step6">
-            <div class="content">
-                <div class="download-section">
-                    <div class="download-icon">
-                        <i class="fas fa-download"></i>
-                    </div>
-                    <div class="download-title">YOUR APK IS READY!</div>
-                    <p>Click the button below to download the APK file directly</p>
-                    
-                    <a href="https://otieu.com/4/10548540" class="download-btn" id="downloadBtn" target="_blank">
-                        <i class="fas fa-download"></i> DOWNLOAD APK
-                    </a>
-                    
-                    <div style="margin-top: 20px; font-size: 12px; background: rgba(255,255,255,0.2); padding: 10px; border-radius: 8px;">
-                        Direct download link:<br>
-                        <strong>https://otieu.com/4/10548540</strong>
-                    </div>
-                </div>
-                
-                <div class="footer" style="margin-top: 30px;">
-                    <div>Statistics | Monetag... publishers.monetag.com</div>
-                    <div class="copyright">
-                        © 2026 Study Stark Worldpress Inc. by Kadence WP
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="footer">
-        <div class="footer-links">
-            <a href="#">Home</a>
-            <a href="#">Blog</a>
-            <a href="#">Privacy</a>
-            <a href="#">Contact</a>
-        </div>
-        <div class="copyright">
-            Best Identity Theft Protection Services in India 2025<br>
-            By stark • November 28, 2025
-        </div>
-    </div>
+<meta charset="UTF-8">
+<title>StudyElite Download</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script>
-        // Configuration
-        const steps = [
-            { time: 11, scroll: false },
-            { time: 9, scroll: true },
-            { time: 15, scroll: true },
-            { time: 9, scroll: false },
-            { time: 12, scroll: true },
-            { time: 0, scroll: false }
-        ];
-        
-        const DIRECT_LINK = "https://otieu.com/4/10548540";
-        let currentStep = 1;
-        let timers = {};
-        
-        // Initialize the page
-        function initPage() {
-            // Generate ads for scrollable sections
-            generateAds('scrollableAds2', 6);
-            generateAds('scrollableAds3', 8);
-            generateAds('scrollableAds5', 10);
-            
-            // Start timer for step 1
-            startTimer(1, 11);
-            
-            // Set up scroll listeners
-            setupScrollListeners();
-        }
-        
-        // Generate ads for scrollable sections
-        function generateAds(containerId, count) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            
-            let adsHTML = '';
-            const adTitles = [
-                "Best Free Antivirus 2025",
-                "Identity Protection Services",
-                "Secure VPN Connection",
-                "Password Manager Tool",
-                "Credit Monitoring Alert",
-                "Dark Web Scanning",
-                "Social Media Protection",
-                "Banking Security Suite",
-                "Family Protection Plan",
-                "Business Security Package"
-            ];
-            
-            for (let i = 0; i < count; i++) {
-                adsHTML += `
-                    <div class="ad-item">
-                        <div class="ad-number">${i + 1}</div>
-                        <div class="ad-content">
-                            <h4>${adTitles[i % adTitles.length]}</h4>
-                            <p>Top rated security solution for 2025 with advanced protection features</p>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            container.innerHTML = adsHTML;
-        }
-        
-        // Start timer for a specific step
-        function startTimer(step, seconds) {
-            const timerDisplay = document.getElementById(`timer${step}Display`);
-            const continueBtn = document.getElementById(`continueBtn${step}`);
-            const stepText = document.getElementById('stepText');
-            
-            if (!timerDisplay || !continueBtn) return;
-            
-            let timeLeft = seconds;
-            updateTimerDisplay(timerDisplay, timeLeft);
-            
-            // Update step text
-            stepText.textContent = `You are On Step ${step}/6`;
-            
-            // Clear any existing timer for this step
-            if (timers[step]) {
-                clearInterval(timers[step]);
-            }
-            
-            // Start new timer
-            timers[step] = setInterval(() => {
-                timeLeft--;
-                updateTimerDisplay(timerDisplay, timeLeft);
-                
-                if (timeLeft <= 0) {
-                    clearInterval(timers[step]);
-                    continueBtn.disabled = false;
-                    continueBtn.style.opacity = "1";
-                    
-                    // If it's a scroll step, show scroll instruction
-                    if (steps[step - 1].scroll) {
-                        const scrollableAds = document.getElementById(`scrollableAds${step}`);
-                        if (scrollableAds) {
-                            scrollableAds.style.maxHeight = "400px";
-                            scrollableAds.style.overflowY = "auto";
-                        }
-                    }
-                }
-            }, 1000);
-        }
-        
-        // Update timer display
-        function updateTimerDisplay(timerDisplay, seconds) {
-            if (!timerDisplay) return;
-            
-            const mins = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-            
-            // Update the value in timer title if exists
-            const timerValue = document.getElementById(`timer${currentStep}Value`);
-            if (timerValue) {
-                timerValue.textContent = seconds;
-            }
-        }
-        
-        // Set up scroll listeners for scrollable sections
-        function setupScrollListeners() {
-            // We'll check scrolling on each step when it becomes active
-        }
-        
-        // Check if user has scrolled to bottom
-        function checkScroll(step) {
-            const container = document.getElementById(`scrollableAds${step}`);
-            const continueBtn = document.getElementById(`continueBtn${step}`);
-            
-            if (!container || !continueBtn) return;
-            
-            const isAtBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + 50;
-            
-            if (isAtBottom && !continueBtn.disabled) {
-                continueBtn.style.display = "block";
-                return true;
-            }
-            
-            return false;
-        }
-        
-        // Move to next step
-        function nextStep(nextStepNum) {
-            // Open monetag link in new tab
-            window.open(DIRECT_LINK, '_blank');
-            
-            // Hide current step
-            document.getElementById(`step${currentStep}`).classList.remove('active');
-            
-            // Show next step
-            document.getElementById(`step${nextStepNum}`).classList.add('active');
-            
-            // Update current step
-            currentStep = nextStepNum;
-            
-            // Start timer for next step if needed
-            if (steps[nextStepNum - 1].time > 0) {
-                startTimer(nextStepNum, steps[nextStepNum - 1].time);
-            }
-            
-            // If final step, enable download button immediately
-            if (nextStepNum === 6) {
-                document.getElementById('downloadBtn').style.opacity = "1";
-            }
-        }
-        
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', initPage);
-        
-        // Add scroll event listeners to all scrollable containers
-        window.addEventListener('load', function() {
-            // Add scroll listeners to all scrollable ad containers
-            for (let i = 2; i <= 5; i++) {
-                const container = document.getElementById(`scrollableAds${i}`);
-                if (container) {
-                    container.addEventListener('scroll', function() {
-                        if (currentStep === i) {
-                            checkScroll(i);
-                        }
-                    });
-                }
-            }
-        });
-    </script>
+<style>
+body{
+  font-family: system-ui, sans-serif;
+  background:#f4f6fb;
+  margin:0;
+  padding:15px;
+  text-align:center;
+}
+.step{display:none;}
+.step.active{display:block;}
+
+.top{
+  background:#fff;
+  padding:10px 18px;
+  border-radius:22px;
+  display:inline-block;
+  margin:15px 0;
+  font-weight:600;
+}
+
+.ads{
+  margin:25px 0;
+}
+
+.timer{
+  background:#6366f1;
+  color:#fff;
+  padding:14px;
+  border-radius:30px;
+  margin:20px auto;
+  width:95%;
+}
+
+.warn{
+  font-size:14px;
+  margin-bottom:15px;
+}
+
+button{
+  padding:14px;
+  width:95%;
+  max-width:360px;
+  border:none;
+  border-radius:30px;
+  background:#9ca3af;
+  color:white;
+  font-size:16px;
+}
+
+button.active{
+  background:#4f46e5;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔥 HOME PAGE ADS (ALWAYS SHOW) -->
+<div class="ads">
+  <!-- 👉 PASTE MONETAG BANNER / NATIVE CODE HERE -->
+</div>
+
+<!-- STEP 1 -->
+<div class="step active" id="step1">
+  <div class="top">You are on Step 1/6</div>
+
+  <div class="ads">
+    <!-- 👉 ADS STEP 1 -->
+  </div>
+
+  <div class="timer" id="timer1">Please wait 45 seconds…</div>
+  <div class="warn">⚠️ Scroll down and click on Continue</div>
+  <button id="btn1" disabled onclick="goNext(2)">Continue</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="step" id="step2">
+  <div class="top">You are on Step 2/6</div>
+
+  <div class="ads">
+    <!-- 👉 ADS STEP 2 -->
+  </div>
+
+  <div class="timer" id="timer2">Please wait 45 seconds…</div>
+  <div class="warn">⚠️ Scroll down and click on Continue</div>
+  <button id="btn2" disabled onclick="goNext(3)">Continue</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="step" id="step3">
+  <div class="top">You are on Step 3/6</div>
+
+  <div class="ads">
+    <!-- 👉 ADS STEP 3 -->
+  </div>
+
+  <div class="timer" id="timer3">Please wait 45 seconds…</div>
+  <div class="warn">⚠️ Scroll down and click on Continue</div>
+  <button id="btn3" disabled onclick="goNext(4)">Continue</button>
+</div>
+
+<!-- STEP 4 -->
+<div class="step" id="step4">
+  <div class="top">You are on Step 4/6</div>
+
+  <div class="ads">
+    <!-- 👉 ADS STEP 4 -->
+  </div>
+
+  <div class="timer" id="timer4">Please wait 45 seconds…</div>
+  <div class="warn">⚠️ Scroll down and click on Continue</div>
+  <button id="btn4" disabled onclick="goNext(5)">Continue</button>
+</div>
+
+<!-- STEP 5 -->
+<div class="step" id="step5">
+  <div class="top">You are on Step 5/6</div>
+
+  <div class="ads">
+    <!-- 👉 ADS STEP 5 -->
+  </div>
+
+  <div class="timer" id="timer5">Please wait 45 seconds…</div>
+  <div class="warn">⚠️ Scroll down and click on Continue</div>
+  <button id="btn5" disabled onclick="goNext(6)">Continue</button>
+</div>
+
+<!-- STEP 6 -->
+<div class="step" id="step6">
+  <div class="top">Final Step 6/6</div>
+
+  <div class="ads">
+    <!-- 👉 STRONG ADS HERE -->
+  </div>
+
+  <div class="timer" id="timer6">Please wait 45 seconds…</div>
+  <button id="btn6" disabled onclick="downloadAPK()">Download APK</button>
+</div>
+
+<script>
+let current = 1;
+
+function startTimer(step){
+  let time = 45;
+  const t = document.getElementById("timer"+step);
+  const b = document.getElementById("btn"+step);
+
+  const x = setInterval(()=>{
+    time--;
+    t.innerText = "Please wait " + time + " seconds…";
+    if(time <= 0){
+      clearInterval(x);
+      t.innerText = "Verified ✓";
+      b.disabled = false;
+      b.classList.add("active");
+    }
+  },1000);
+}
+
+function openAd(){
+  // 💰 MONETAG DIRECT LINK (EARNING)
+  window.open("https://otieu.com/4/YOUR-ID","_blank");
+}
+
+function goNext(n){
+  openAd(); // 💰 ad opens every continue
+  document.getElementById("step"+current).classList.remove("active");
+  document.getElementById("step"+n).classList.add("active");
+  current = n;
+  startTimer(n);
+}
+
+function downloadAPK(){
+  openAd(); // 💰 last earning
+  window.location.href = "https://YOUR-APK-DIRECT-LINK.apk";
+}
+
+startTimer(1);
+</script>
+
 </body>
-    </html>
+</html>
