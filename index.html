@@ -1,179 +1,649 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>StudyElite Download</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-  font-family: system-ui, sans-serif;
-  background:#f4f6fb;
-  margin:0;
-  padding:15px;
-  text-align:center;
-}
-.step{display:none;}
-.step.active{display:block;}
-
-.top{
-  background:#fff;
-  padding:10px 16px;
-  border-radius:20px;
-  display:inline-block;
-  margin:15px 0;
-  font-weight:600;
-}
-
-.ad-box{
-  background:#ffffff;
-  border:2px dashed #c7c7c7;
-  border-radius:12px;
-  padding:15px;
-  margin:20px auto;
-  width:95%;
-  max-width:400px;
-  color:#444;
-  font-size:14px;
-}
-
-.timer{
-  background:#6366f1;
-  color:#fff;
-  padding:12px;
-  border-radius:25px;
-  margin:20px auto;
-  width:90%;
-}
-
-.warn{
-  font-size:14px;
-  margin-bottom:15px;
-}
-
-button{
-  padding:14px;
-  width:90%;
-  max-width:360px;
-  border:none;
-  border-radius:25px;
-  background:#9ca3af;
-  color:white;
-  font-size:16px;
-}
-
-button.active{
-  background:#4f46e5;
-  cursor:pointer;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ads Flow - Multi-Step Process</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .header {
+            background-color: #1a73e8;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .content {
+            padding: 30px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        
+        .step {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .step.active {
+            background-color: #1a73e8;
+            color: white;
+        }
+        
+        .step.completed {
+            background-color: #34a853;
+            color: white;
+        }
+        
+        .step-line {
+            flex-grow: 1;
+            height: 3px;
+            background-color: #e0e0e0;
+            margin: 0 5px;
+            align-self: center;
+        }
+        
+        .step-line.completed {
+            background-color: #34a853;
+        }
+        
+        .step-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+        
+        .step-description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .ads-container {
+            width: 100%;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .ad-placeholder {
+            background-color: #e8f0fe;
+            border: 2px dashed #1a73e8;
+            border-radius: 5px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: #1a73e8;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .ad-placeholder.small {
+            height: 100px;
+            margin: 10px 0;
+        }
+        
+        .timer {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1a73e8;
+            margin: 20px 0;
+        }
+        
+        .verify-btn {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        .verify-btn:hover {
+            background-color: #0d62d9;
+        }
+        
+        .verify-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .continue-btn {
+            background-color: #34a853;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        .continue-btn:hover {
+            background-color: #2e8b47;
+        }
+        
+        .scroll-indicator {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .scroll-indicator i {
+            margin-left: 10px;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .download-section {
+            text-align: center;
+            padding: 30px;
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .download-btn {
+            background-color: #34a853;
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 20px 0;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            background-color: #2e8b47;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin: 30px 0 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #34a853;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9rem;
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        /* For the scrolling step */
+        .scrollable-ads {
+            max-height: 400px;
+            overflow-y: auto;
+            width: 100%;
+            padding-right: 10px;
+        }
+        
+        /* Scrollbar styling */
+        .scrollable-ads::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .scrollable-ads::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .scrollable-ads::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        
+        .scrollable-ads::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        .bottom-continue {
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 600px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .step-title {
+                font-size: 1.5rem;
+            }
+            
+            .ad-placeholder {
+                height: 200px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
+    <div class="container">
+        <div class="header">
+            Multi-Step Ads Flow
+        </div>
+        
+        <div class="step-indicator" id="stepIndicator">
+            <!-- Steps will be dynamically generated -->
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress" id="progressBar"></div>
+        </div>
+        
+        <div class="content" id="contentArea">
+            <!-- Content will be dynamically updated based on step -->
+        </div>
+    </div>
+    
+    <footer>
+        <p>Follow all steps to complete the process and access the download link</p>
+        <p>Total Steps: 6 | Current Step: <span id="currentStepDisplay">1</span></p>
+    </footer>
 
-<!-- 🔥 HOME ADS BOX -->
-<div class="ad-box">
-  🔥 Advertisement  
-  <br><br>
-  <small>Ads help us provide free downloads</small>
-</div>
-
-<!-- STEP 1 -->
-<div class="step active" id="step1">
-  <div class="top">You are on Step 1/6</div>
-  <div class="ad-box">📢 Sponsored Content</div>
-  <div class="timer" id="timer1">Please wait 45 seconds…</div>
-  <div class="warn">⚠️ Scroll down and click on Continue</div>
-  <button id="btn1" disabled onclick="nextStep(2)">Continue</button>
-</div>
-
-<!-- STEP 2 -->
-<div class="step" id="step2">
-  <div class="top">You are on Step 2/6</div>
-  <div class="ad-box">📢 Sponsored Content</div>
-  <div class="timer" id="timer2">Please wait 45 seconds…</div>
-  <div class="warn">⚠️ Scroll down and click on Continue</div>
-  <button id="btn2" disabled onclick="nextStep(3)">Continue</button>
-</div>
-
-<!-- STEP 3 -->
-<div class="step" id="step3">
-  <div class="top">You are on Step 3/6</div>
-  <div class="ad-box">📢 Sponsored Content</div>
-  <div class="timer" id="timer3">Please wait 45 seconds…</div>
-  <div class="warn">⚠️ Scroll down and click on Continue</div>
-  <button id="btn3" disabled onclick="nextStep(4)">Continue</button>
-</div>
-
-<!-- STEP 4 -->
-<div class="step" id="step4">
-  <div class="top">You are on Step 4/6</div>
-  <div class="ad-box">📢 Sponsored Content</div>
-  <div class="timer" id="timer4">Please wait 45 seconds…</div>
-  <div class="warn">⚠️ Scroll down and click on Continue</div>
-  <button id="btn4" disabled onclick="nextStep(5)">Continue</button>
-</div>
-
-<!-- STEP 5 -->
-<div class="step" id="step5">
-  <div class="top">You are on Step 5/6</div>
-  <div class="ad-box">📢 Sponsored Content</div>
-  <div class="timer" id="timer5">Please wait 45 seconds…</div>
-  <div class="warn">⚠️ Scroll down and click on Continue</div>
-  <button id="btn5" disabled onclick="nextStep(6)">Continue</button>
-</div>
-
-<!-- STEP 6 -->
-<div class="step" id="step6">
-  <div class="top">Final Step 6/6</div>
-  <div class="ad-box">🔥 Final Advertisement</div>
-  <div class="timer" id="timer6">Please wait 45 seconds…</div>
-  <button id="btn6" disabled onclick="downloadAPK()">Download APK</button>
-</div>
-
-<script>
-let current = 1;
-
-const MONETAG_DIRECT_LINK = "https://otieu.com/4/10548540";
-const APK_LINK = "https://YOUR-APK-DIRECT-LINK.apk";
-
-function fireAd(){
-  window.open(MONETAG_DIRECT_LINK, "_blank");
-}
-
-function startTimer(step){
-  let time = 45;
-  const timer = document.getElementById("timer"+step);
-  const btn = document.getElementById("btn"+step);
-
-  const x = setInterval(()=>{
-    time--;
-    timer.innerText = "Please wait " + time + " seconds…";
-    if(time <= 0){
-      clearInterval(x);
-      timer.innerText = "Verified ✓";
-      btn.disabled = false;
-      btn.classList.add("active");
-    }
-  },1000);
-}
-
-function nextStep(n){
-  fireAd(); // 🔥 Monetag earning hit
-  document.getElementById("step"+current).classList.remove("active");
-  document.getElementById("step"+n).classList.add("active");
-  current = n;
-  startTimer(n);
-}
-
-function downloadAPK(){
-  fireAd(); // 🔥 final earning hit
-  setTimeout(()=>{
-    window.location.href = APK_LINK;
-  },1500);
-}
-
-startTimer(1);
-</script>
+    <script>
+        // Steps configuration
+        const steps = [
+            {
+                title: "Step 1: Initial Ad",
+                description: "Welcome! Click continue to proceed to the verification step.",
+                type: "initial_ad",
+                adsCount: 1
+            },
+            {
+                title: "Step 2: Verification",
+                description: "Please verify that you're human by waiting for the timer to complete.",
+                type: "verification",
+                timerSeconds: 5
+            },
+            {
+                title: "Step 3: Scroll Down",
+                description: "Scroll down to view more content and continue.",
+                type: "scroll",
+                adsCount: 8
+            },
+            {
+                title: "Step 4: More Ads",
+                description: "Please view these advertisements to continue.",
+                type: "ads",
+                adsCount: 5
+            },
+            {
+                title: "Step 5: Additional Verification",
+                description: "Almost there! One more verification step.",
+                type: "verification",
+                timerSeconds: 3
+            },
+            {
+                title: "Step 6: Final Step",
+                description: "You've reached the final step! Download the APK below.",
+                type: "download",
+                downloadUrl: "https://otieu.com/4/10548540"
+            }
+        ];
+        
+        // State management
+        let currentStep = 0;
+        let timerInterval = null;
+        let secondsRemaining = 0;
+        let hasScrolled = false;
+        
+        // Initialize the app
+        function initApp() {
+            renderStepIndicator();
+            loadStep(currentStep);
+            updateProgressBar();
+            updateStepDisplay();
+        }
+        
+        // Render step indicator
+        function renderStepIndicator() {
+            const stepIndicator = document.getElementById('stepIndicator');
+            stepIndicator.innerHTML = '';
+            
+            steps.forEach((step, index) => {
+                // Add step circle
+                const stepCircle = document.createElement('div');
+                stepCircle.className = `step ${index === currentStep ? 'active' : ''} ${index < currentStep ? 'completed' : ''}`;
+                stepCircle.textContent = index + 1;
+                stepIndicator.appendChild(stepCircle);
+                
+                // Add line between steps (except after the last one)
+                if (index < steps.length - 1) {
+                    const stepLine = document.createElement('div');
+                    stepLine.className = `step-line ${index < currentStep ? 'completed' : ''}`;
+                    stepIndicator.appendChild(stepLine);
+                }
+            });
+        }
+        
+        // Load current step
+        function loadStep(stepIndex) {
+            const contentArea = document.getElementById('contentArea');
+            const step = steps[stepIndex];
+            
+            let contentHTML = '';
+            
+            switch(step.type) {
+                case 'initial_ad':
+                    contentHTML = `
+                        <h2 class="step-title">${step.title}</h2>
+                        <p class="step-description">${step.description}</p>
+                        
+                        <div class="ads-container">
+                            <div class="ad-placeholder">
+                                <i class="fas fa-ad" style="font-size: 2rem; margin-right: 10px;"></i>
+                                ADVERTISEMENT
+                            </div>
+                        </div>
+                        
+                        <button class="continue-btn" onclick="nextStep()">
+                            Continue <i class="fas fa-arrow-right"></i>
+                        </button>
+                    `;
+                    break;
+                    
+                case 'verification':
+                    secondsRemaining = step.timerSeconds;
+                    
+                    contentHTML = `
+                        <h2 class="step-title">${step.title}</h2>
+                        <p class="step-description">${step.description}</p>
+                        
+                        <div class="timer" id="timerDisplay">${formatTime(secondsRemaining)}</div>
+                        
+                        <button class="verify-btn" id="verifyBtn" onclick="startVerification()" disabled>
+                            Verifying... <i class="fas fa-spinner fa-spin"></i>
+                        </button>
+                        
+                        <p style="color: #666; margin-top: 10px;">Please wait for the timer to complete</p>
+                    `;
+                    
+                    // Start timer automatically
+                    setTimeout(() => {
+                        startVerification();
+                    }, 500);
+                    break;
+                    
+                case 'scroll':
+                    hasScrolled = false;
+                    
+                    // Generate multiple ads
+                    let adsHTML = '';
+                    for (let i = 0; i < step.adsCount; i++) {
+                        adsHTML += `
+                            <div class="ad-placeholder small">
+                                Advertisement ${i+1}
+                            </div>
+                        `;
+                    }
+                    
+                    contentHTML = `
+                        <h2 class="step-title">${step.title}</h2>
+                        <p class="step-description">${step.description}</p>
+                        
+                        <div class="scroll-indicator">
+                            <i class="fas fa-arrow-down"></i> Scroll down to continue <i class="fas fa-arrow-down"></i>
+                        </div>
+                        
+                        <div class="scrollable-ads" id="scrollableAds" onscroll="checkScroll()">
+                            ${adsHTML}
+                            
+                            <div style="text-align: center; margin: 30px 0;">
+                                <p>Keep scrolling...</p>
+                            </div>
+                            
+                            <div class="ad-placeholder">
+                                <i class="fas fa-ad" style="font-size: 2rem; margin-right: 10px;"></i>
+                                FINAL ADVERTISEMENT
+                            </div>
+                            
+                            <div class="bottom-continue" id="bottomContinue" style="display: none;">
+                                <button class="continue-btn" onclick="nextStep()">
+                                    Continue <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <p id="scrollHint" style="color: #666; margin-top: 20px;">Scroll to the bottom to reveal continue button</p>
+                    `;
+                    break;
+                    
+                case 'ads':
+                    // Generate multiple ads
+                    adsHTML = '';
+                    for (let i = 0; i < step.adsCount; i++) {
+                        adsHTML += `
+                            <div class="ad-placeholder">
+                                Advertisement ${i+1}
+                            </div>
+                        `;
+                    }
+                    
+                    contentHTML = `
+                        <h2 class="step-title">${step.title}</h2>
+                        <p class="step-description">${step.description}</p>
+                        
+                        <div class="ads-container">
+                            ${adsHTML}
+                        </div>
+                        
+                        <button class="continue-btn" onclick="nextStep()">
+                            Continue <i class="fas fa-arrow-right"></i>
+                        </button>
+                    `;
+                    break;
+                    
+                case 'download':
+                    contentHTML = `
+                        <h2 class="step-title">${step.title}</h2>
+                        <p class="step-description">${step.description}</p>
+                        
+                        <div class="download-section">
+                            <i class="fas fa-download" style="font-size: 4rem; color: #34a853; margin-bottom: 20px;"></i>
+                            <h3 style="margin-bottom: 10px;">Your APK is ready!</h3>
+                            <p style="margin-bottom: 30px; color: #666;">Click the button below to download the APK file directly.</p>
+                            
+                            <a href="${step.downloadUrl}" class="download-btn" target="_blank">
+                                <i class="fas fa-download"></i> Download APK
+                            </a>
+                            
+                            <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+                                Direct download link: <br>
+                                <span style="word-break: break-all;">${step.downloadUrl}</span>
+                            </p>
+                        </div>
+                        
+                        <div style="margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+                            <h4 style="margin-bottom: 10px;">Process Completed!</h4>
+                            <p>You have successfully completed all steps. Thank you for your patience!</p>
+                        </div>
+                    `;
+                    break;
+            }
+            
+            contentArea.innerHTML = contentHTML;
+            
+            // If this is a scroll step, set up scroll detection
+            if (step.type === 'scroll') {
+                setTimeout(() => {
+                    const scrollableAds = document.getElementById('scrollableAds');
+                    scrollableAds.scrollTop = 0;
+                }, 100);
+            }
+        }
+        
+        // Format time as MM:SS
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Start verification timer
+        function startVerification() {
+            const verifyBtn = document.getElementById('verifyBtn');
+            const timerDisplay = document.getElementById('timerDisplay');
+            
+            // Start timer
+            timerInterval = setInterval(() => {
+                secondsRemaining--;
+                timerDisplay.textContent = formatTime(secondsRemaining);
+                
+                if (secondsRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    verifyBtn.innerHTML = 'Verified <i class="fas fa-check"></i>';
+                    verifyBtn.style.backgroundColor = '#34a853';
+                    
+                    // Enable continue after 1 second
+                    setTimeout(() => {
+                        verifyBtn.innerHTML = 'Continue <i class="fas fa-arrow-right"></i>';
+                        verifyBtn.style.backgroundColor = '#34a853';
+                        verifyBtn.disabled = false;
+                        verifyBtn.onclick = nextStep;
+                    }, 1000);
+                }
+            }, 1000);
+        }
+        
+        // Check if user has scrolled to bottom
+        function checkScroll() {
+            if (hasScrolled) return;
+            
+            const scrollableAds = document.getElementById('scrollableAds');
+            const bottomContinue = document.getElementById('bottomContinue');
+            const scrollHint = document.getElementById('scrollHint');
+            
+            // Check if scrolled to bottom
+            const isAtBottom = scrollableAds.scrollHeight - scrollableAds.scrollTop <= scrollableAds.clientHeight + 50;
+            
+            if (isAtBottom) {
+                hasScrolled = true;
+                bottomContinue.style.display = 'block';
+                scrollHint.textContent = 'Continue button is now visible!';
+                scrollHint.style.color = '#34a853';
+                scrollHint.style.fontWeight = 'bold';
+                
+                // Scroll a bit more to show the button
+                setTimeout(() => {
+                    scrollableAds.scrollTop = scrollableAds.scrollHeight;
+                }, 300);
+            }
+        }
+        
+        // Move to next step
+        function nextStep() {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                renderStepIndicator();
+                loadStep(currentStep);
+                updateProgressBar();
+                updateStepDisplay();
+            }
+        }
+        
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = (currentStep / (steps.length - 1)) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+        
+        // Update current step display in footer
+        function updateStepDisplay() {
+            document.getElementById('currentStepDisplay').textContent = currentStep + 1;
+        }
+        
+        // Initialize the app when page loads
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
 </body>
-</html>
+  </html>
