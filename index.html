@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Content Access</title>
+    <title>Get Your Content - Complete Steps</title>
     <style>
         * {
             margin: 0;
@@ -16,124 +16,105 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 15px;
+            color: #333;
         }
 
-        .container {
+        .page-container {
             max-width: 480px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
         }
 
         /* Header */
-        .header {
+        .page-header {
             background: linear-gradient(90deg, #4f46e5, #7c3aed);
             color: white;
             padding: 20px;
             text-align: center;
+            position: relative;
         }
 
-        .header h1 {
-            font-size: 24px;
+        .page-header h1 {
+            font-size: 22px;
             font-weight: 700;
             margin-bottom: 5px;
         }
 
-        .header p {
+        .page-header p {
             font-size: 14px;
             opacity: 0.9;
         }
 
-        /* Progress Section */
-        .progress-section {
-            padding: 15px 20px;
+        /* Step Indicator */
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
             background: #f8fafc;
             border-bottom: 1px solid #e2e8f0;
         }
 
-        .progress-text {
-            color: #4f46e5;
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+        }
+
+        .step-dot.active {
+            background: #4f46e5;
+            transform: scale(1.3);
+        }
+
+        .step-dot.completed {
+            background: #10b981;
+        }
+
+        .step-text {
+            text-align: center;
+            padding: 12px;
+            background: #4f46e5;
+            color: white;
             font-weight: 600;
             font-size: 14px;
-            text-align: center;
-            margin-bottom: 10px;
         }
 
-        .progress-bar {
-            height: 6px;
-            background: #e2e8f0;
-            border-radius: 3px;
+        /* Ads Container */
+        .ads-container {
+            padding: 20px;
+            min-height: 320px;
+        }
+
+        .ad-box {
+            background: #ffffff;
+            border-radius: 12px;
             overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #10b981, #059669);
-            width: 16.66%;
-            transition: width 0.5s ease;
-        }
-
-        /* Main Content */
-        .content {
-            padding: 0;
-        }
-
-        /* Step Container */
-        .step-container {
-            display: none;
-            min-height: 500px;
-        }
-
-        .step-container.active {
-            display: block;
-        }
-
-        /* Ad Card */
-        .ad-card {
-            margin: 20px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .ad-card:hover {
-            border-color: #4f46e5;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 2px solid #e2e8f0;
+            margin-bottom: 20px;
         }
 
         .ad-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
             background: #fbbf24;
             color: #78350f;
             font-size: 10px;
             font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            z-index: 2;
-        }
-
-        .ad-image {
-            height: 200px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            font-weight: 600;
+            padding: 4px 12px;
+            display: inline-block;
+            border-radius: 0 0 8px 8px;
+            position: relative;
+            top: -2px;
         }
 
         .ad-content {
             padding: 20px;
-            background: white;
+            text-align: center;
         }
 
         .ad-title {
@@ -151,29 +132,47 @@
             margin-bottom: 15px;
         }
 
-        .ad-cta {
-            display: inline-block;
-            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+        .ad-visual {
+            height: 120px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 8px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
+            font-size: 16px;
         }
 
-        .ad-cta:hover {
-            background: linear-gradient(90deg, #3730a3, #5b21b6);
-            transform: scale(1.05);
+        .auto-play-indicator {
+            text-align: center;
+            color: #10b981;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .auto-play-indicator i {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
 
         /* Timer Section */
         .timer-section {
             text-align: center;
-            padding: 25px 20px;
+            padding: 20px;
             background: #f8fafc;
-            margin: 0 20px 20px;
+            margin: 15px 0;
             border-radius: 12px;
             border: 1px dashed #cbd5e1;
         }
@@ -181,28 +180,34 @@
         .timer-title {
             color: #4f46e5;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-size: 14px;
         }
 
         .timer-display {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 700;
             color: #dc2626;
             margin: 10px 0;
             font-family: monospace;
+            letter-spacing: 2px;
         }
 
         .timer-note {
             color: #64748b;
             font-size: 12px;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         /* Continue Button */
+        .continue-section {
+            padding: 20px;
+            padding-top: 0;
+        }
+
         .continue-btn {
             display: block;
-            margin: 20px;
+            width: 100%;
             padding: 18px;
             background: linear-gradient(90deg, #10b981, #059669);
             color: white;
@@ -215,6 +220,8 @@
             text-align: center;
             opacity: 0.5;
             pointer-events: none;
+            position: relative;
+            overflow: hidden;
         }
 
         .continue-btn.active {
@@ -228,6 +235,15 @@
             box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
         }
 
+        .btn-icon {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .continue-btn.active:hover .btn-icon {
+            transform: translateX(5px);
+        }
+
         /* Download Section */
         .download-section {
             padding: 30px 20px;
@@ -236,6 +252,17 @@
             color: white;
             margin: 20px;
             border-radius: 16px;
+            display: none;
+        }
+
+        .download-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .download-icon {
@@ -249,7 +276,7 @@
             margin-bottom: 10px;
         }
 
-        .download-btn {
+        .download-link {
             display: inline-block;
             background: white;
             color: #059669;
@@ -260,55 +287,74 @@
             font-size: 16px;
             margin-top: 20px;
             transition: all 0.3s ease;
+            word-break: break-all;
         }
 
-        .download-btn:hover {
+        .download-link:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 25px rgba(255,255,255,0.2);
         }
 
-        /* Touch Indicator */
-        .touch-indicator {
-            text-align: center;
-            padding: 10px;
-            color: #4f46e5;
-            font-size: 12px;
-            font-weight: 600;
+        .link-display {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            font-size: 13px;
         }
 
-        .touch-icon {
-            animation: pulse 2s infinite;
-            display: inline-block;
-            margin-right: 5px;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        /* Stats Display */
-        .stats-display {
-            background: #1e293b;
+        .link-display a {
             color: white;
-            padding: 15px 20px;
+            text-decoration: underline;
+            word-break: break-all;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        .page-footer {
+            background: #1e293b;
+            color: #cbd5e1;
+            padding: 20px;
             text-align: center;
             font-size: 12px;
             border-top: 1px solid #334155;
         }
 
-        .stats-highlight {
-            color: #fbbf24;
-            font-weight: 700;
+        .footer-note {
+            margin-top: 10px;
+            color: #94a3b8;
+            font-size: 11px;
+        }
+
+        /* Steps Container */
+        .steps-container {
+            display: none;
+        }
+
+        .steps-container.active {
+            display: block;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            height: 4px;
+            background: #e2e8f0;
+            width: 100%;
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 2px;
         }
 
         /* Responsive */
         @media (max-width: 400px) {
-            .ad-image {
-                height: 160px;
-            }
-            
             .ad-title {
                 font-size: 18px;
             }
@@ -316,213 +362,258 @@
             .timer-display {
                 font-size: 28px;
             }
+            
+            .download-title {
+                font-size: 20px;
+            }
+        }
+
+        /* Auto-play animation */
+        .auto-play-animation {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #10b981;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: playPulse 2s infinite;
+        }
+
+        @keyframes playPulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="page-container">
         <!-- Header -->
-        <div class="header">
-            <h1>Premium Content Access</h1>
-            <p>Complete all steps to unlock your download</p>
+        <div class="page-header">
+            <h1>Complete Steps to Unlock Content</h1>
+            <p>Watch ads automatically & proceed to final link</p>
         </div>
 
-        <!-- Progress Section -->
-        <div class="progress-section">
-            <div class="progress-text" id="stepText">Step 1 of 6: View Advertisement</div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+            <div class="step-dot active" id="stepDot1"></div>
+            <div class="step-dot" id="stepDot2"></div>
+            <div class="step-dot" id="stepDot3"></div>
+            <div class="step-dot" id="stepDot4"></div>
+            <div class="step-dot" id="stepDot5"></div>
+            <div class="step-dot" id="stepDot6"></div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="step-text" id="currentStepText">Step 1/6: Ad Playing Automatically</div>
+
+        <!-- Steps Content -->
+        <div class="steps-container active" id="step1Content">
+            <div class="ads-container">
+                <div class="auto-play-indicator">
+                    <div class="auto-play-animation"></div>
+                    AD PLAYING AUTOMATICALLY
+                </div>
+
+                <div class="ad-box">
+                    <div class="ad-badge">PREMIUM AD</div>
+                    <div class="ad-content">
+                        <h3 class="ad-title">Exclusive Investment Platform 2025</h3>
+                        <div class="ad-visual">
+                            <i class="fas fa-chart-line" style="font-size: 32px; margin-right: 10px;"></i>
+                            HIGH RETURNS GUARANTEED
+                        </div>
+                        <p class="ad-description">Join 50,000+ investors earning passive income daily. AI-powered trading with verified results.</p>
+                    </div>
+                </div>
+
+                <div class="timer-section">
+                    <div class="timer-title">Ad playing automatically</div>
+                    <div class="timer-display" id="timer1">00:08</div>
+                    <div class="timer-note">Please wait for ad to complete</div>
+                </div>
+            </div>
+
+            <div class="continue-section">
+                <button class="continue-btn" id="continueBtn1" onclick="goToStep(2)">
+                    Continue to Step 2 <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Main Content Area -->
-        <div class="content" id="contentArea">
-            <!-- Step 1 -->
-            <div class="step-container active" id="step1">
-                <div class="touch-indicator">
-                    <span class="touch-icon"><i class="fas fa-hand-pointer"></i></span>
-                    TOUCH THE AD TO CONTINUE
+        <!-- Step 2 Content -->
+        <div class="steps-container" id="step2Content">
+            <div class="ads-container">
+                <div class="auto-play-indicator">
+                    <div class="auto-play-animation"></div>
+                    ADVERTISEMENT PLAYING
                 </div>
-                
-                <div class="ad-card" id="adCard1">
-                    <div class="ad-badge">HIGH CPM</div>
-                    <div class="ad-image">
-                        <span>PREMIUM ADVERTISEMENT</span>
-                    </div>
+
+                <div class="ad-box">
+                    <div class="ad-badge">SPONSORED CONTENT</div>
                     <div class="ad-content">
-                        <h3 class="ad-title">Exclusive Investment Opportunity 2025</h3>
-                        <p class="ad-description">Join thousands of investors who are earning passive income with our verified investment platform. Limited spots available.</p>
-                        <a href="https://otieu.com/4/10548540" class="ad-cta" target="_blank" onclick="trackAdClick(1)">
-                            <i class="fas fa-external-link-alt"></i> Learn More Now
-                        </a>
+                        <h3 class="ad-title">Luxury Car Collection Sale</h3>
+                        <div class="ad-visual" style="background: linear-gradient(45deg, #ef4444, #dc2626);">
+                            <i class="fas fa-car" style="font-size: 32px; margin-right: 10px;"></i>
+                            70% DISCOUNT
+                        </div>
+                        <p class="ad-description">Limited time offer on premium luxury vehicles. Manufacturer warranty included.</p>
                     </div>
                 </div>
 
                 <div class="timer-section">
-                    <div class="timer-title">Please wait for the timer</div>
-                    <div class="timer-display" id="timer1">00:10</div>
-                    <div class="timer-note">Advertisement engagement required to proceed</div>
+                    <div class="timer-title">Advertisement in progress</div>
+                    <div class="timer-display" id="timer2">00:10</div>
+                    <div class="timer-note">Auto-playing next ad soon</div>
                 </div>
-
-                <button class="continue-btn" id="continueBtn1" onclick="nextStep(2)">
-                    Continue to Step 2 <i class="fas fa-arrow-right"></i>
-                </button>
             </div>
 
-            <!-- Step 2 -->
-            <div class="step-container" id="step2">
-                <div class="touch-indicator">
-                    <span class="touch-icon"><i class="fas fa-hand-pointer"></i></span>
-                    CLICK AD FOR HIGHER REWARDS
-                </div>
-                
-                <div class="ad-card" id="adCard2">
-                    <div class="ad-badge">HIGH VALUE</div>
-                    <div class="ad-image" style="background: linear-gradient(45deg, #ef4444, #dc2626);">
-                        <span>LIMITED TIME OFFER</span>
-                    </div>
-                    <div class="ad-content">
-                        <h3 class="ad-title">Luxury Watch Collection - 70% Discount</h3>
-                        <p class="ad-description">Authentic luxury watches with manufacturer warranty. Special flash sale ending today.</p>
-                        <a href="https://otieu.com/4/10548540" class="ad-cta" target="_blank" onclick="trackAdClick(2)">
-                            <i class="fas fa-gem"></i> View Collection
-                        </a>
-                    </div>
-                </div>
-
-                <div class="timer-section">
-                    <div class="timer-title">Advertisement verification in progress</div>
-                    <div class="timer-display" id="timer2">00:08</div>
-                    <div class="timer-note">Engagement improves your CPM rate</div>
-                </div>
-
-                <button class="continue-btn" id="continueBtn2" onclick="nextStep(3)">
-                    Continue to Step 3 <i class="fas fa-arrow-right"></i>
+            <div class="continue-section">
+                <button class="continue-btn" id="continueBtn2" onclick="goToStep(3)">
+                    Continue to Step 3 <i class="fas fa-arrow-right btn-icon"></i>
                 </button>
             </div>
+        </div>
 
-            <!-- Step 3 -->
-            <div class="step-container" id="step3">
-                <div class="touch-indicator">
-                    <span class="touch-icon"><i class="fas fa-hand-pointer"></i></span>
-                    TOUCH = HIGHER EARNINGS
+        <!-- Step 3 Content -->
+        <div class="steps-container" id="step3Content">
+            <div class="ads-container">
+                <div class="auto-play-indicator">
+                    <div class="auto-play-animation"></div>
+                    AUTO-PLAY ADVERTISEMENT
                 </div>
-                
-                <div class="ad-card" id="adCard3">
-                    <div class="ad-badge">SPONSORED</div>
-                    <div class="ad-image" style="background: linear-gradient(45deg, #f59e0b, #d97706);">
-                        <span>TRAVEL DEAL</span>
-                    </div>
+
+                <div class="ad-box">
+                    <div class="ad-badge">TRAVEL OFFER</div>
                     <div class="ad-content">
-                        <h3 class="ad-title">5-Star Maldives Vacation - All Inclusive</h3>
-                        <p class="ad-description">Luxury beachfront resort with private pool. Book now and get complimentary spa package.</p>
-                        <a href="https://otieu.com/4/10548540" class="ad-cta" target="_blank" onclick="trackAdClick(3)">
-                            <i class="fas fa-plane"></i> Book Now
-                        </a>
+                        <h3 class="ad-title">5-Star Maldives Vacation Package</h3>
+                        <div class="ad-visual" style="background: linear-gradient(45deg, #0ea5e9, #0369a1);">
+                            <i class="fas fa-umbrella-beach" style="font-size: 32px; margin-right: 10px;"></i>
+                            ALL INCLUSIVE
+                        </div>
+                        <p class="ad-description">Luxury beachfront resort with private pool. Complimentary spa package included.</p>
                     </div>
                 </div>
 
                 <div class="timer-section">
-                    <div class="timer-title">Processing your engagement data</div>
+                    <div class="timer-title">Auto-play advertisement</div>
                     <div class="timer-display" id="timer3">00:12</div>
-                    <div class="timer-note">Active users earn premium CPM rates</div>
+                    <div class="timer-note">Please wait for completion</div>
                 </div>
-
-                <button class="continue-btn" id="continueBtn3" onclick="nextStep(4)">
-                    Continue to Step 4 <i class="fas fa-arrow-right"></i>
-                </button>
             </div>
 
-            <!-- Step 4 -->
-            <div class="step-container" id="step4">
-                <div class="touch-indicator">
-                    <span class="touch-icon"><i class="fas fa-hand-pointer"></i></span>
-                    PREMIUM ADVERTISEMENT
+            <div class="continue-section">
+                <button class="continue-btn" id="continueBtn3" onclick="goToStep(4)">
+                    Continue to Step 4 <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 4 Content -->
+        <div class="steps-container" id="step4Content">
+            <div class="ads-container">
+                <div class="auto-play-indicator">
+                    <div class="auto-play-animation"></div>
+                    AD PLAYING
                 </div>
-                
-                <div class="ad-card" id="adCard4">
-                    <div class="ad-badge">ELITE CPM</div>
-                    <div class="ad-image" style="background: linear-gradient(45deg, #10b981, #059669);">
-                        <span>INVESTMENT</span>
-                    </div>
+
+                <div class="ad-box">
+                    <div class="ad-badge">INVESTMENT</div>
                     <div class="ad-content">
-                        <h3 class="ad-title">Cryptocurrency Trading Platform - 300% ROI</h3>
-                        <p class="ad-description">AI-powered trading with guaranteed returns. Trusted by 50,000+ investors worldwide.</p>
-                        <a href="https://otieu.com/4/10548540" class="ad-cta" target="_blank" onclick="trackAdClick(4)">
-                            <i class="fas fa-chart-line"></i> Start Trading
-                        </a>
+                        <h3 class="ad-title">Cryptocurrency Trading Signals</h3>
+                        <div class="ad-visual" style="background: linear-gradient(45deg, #f59e0b, #d97706);">
+                            <i class="fas fa-coins" style="font-size: 32px; margin-right: 10px;"></i>
+                            300% ROI
+                        </div>
+                        <p class="ad-description">Professional trading signals with 92% accuracy rate. Free trial available.</p>
                     </div>
                 </div>
 
                 <div class="timer-section">
-                    <div class="timer-title">Finalizing premium verification</div>
-                    <div class="timer-display" id="timer4">00:10</div>
-                    <div class="timer-note">You're qualifying for premium CPM bracket</div>
+                    <div class="timer-title">Advertisement playing</div>
+                    <div class="timer-display" id="timer4">00:09</div>
+                    <div class="timer-note">Almost there! Continue to next step</div>
                 </div>
-
-                <button class="continue-btn" id="continueBtn4" onclick="nextStep(5)">
-                    Continue to Step 5 <i class="fas fa-arrow-right"></i>
-                </button>
             </div>
 
-            <!-- Step 5 -->
-            <div class="step-container" id="step5">
-                <div class="touch-indicator">
-                    <span class="touch-icon"><i class="fas fa-hand-pointer"></i></span>
-                    FINAL PREMIUM AD
+            <div class="continue-section">
+                <button class="continue-btn" id="continueBtn4" onclick="goToStep(5)">
+                    Continue to Step 5 <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 5 Content -->
+        <div class="steps-container" id="step5Content">
+            <div class="ads-container">
+                <div class="auto-play-indicator">
+                    <div class="auto-play-animation"></div>
+                    FINAL AUTO-PLAY AD
                 </div>
-                
-                <div class="ad-card" id="adCard5">
-                    <div class="ad-badge">MAX CPM</div>
-                    <div class="ad-image" style="background: linear-gradient(45deg, #8b5cf6, #7c3aed);">
-                        <span>EXCLUSIVE</span>
-                    </div>
+
+                <div class="ad-box">
+                    <div class="ad-badge">ELITE SERVICE</div>
                     <div class="ad-content">
-                        <h3 class="ad-title">Private Wealth Management Service</h3>
-                        <p class="ad-description">Access to exclusive investment opportunities usually reserved for billionaires.</p>
-                        <a href="https://otieu.com/4/10548540" class="ad-cta" target="_blank" onclick="trackAdClick(5)">
-                            <i class="fas fa-crown"></i> Apply Now
-                        </a>
+                        <h3 class="ad-title">Private Wealth Management</h3>
+                        <div class="ad-visual" style="background: linear-gradient(45deg, #8b5cf6, #7c3aed);">
+                            <i class="fas fa-crown" style="font-size: 32px; margin-right: 10px;"></i>
+                            EXCLUSIVE ACCESS
+                        </div>
+                        <p class="ad-description">High-net-worth investment opportunities. Minimum portfolio $500,000.</p>
                     </div>
                 </div>
 
                 <div class="timer-section">
-                    <div class="timer-title">Maximizing your CPM earnings</div>
+                    <div class="timer-title">Final advertisement</div>
                     <div class="timer-display" id="timer5">00:15</div>
-                    <div class="timer-note">Final step to unlock maximum revenue</div>
+                    <div class="timer-note">Last step before download link</div>
                 </div>
-
-                <button class="continue-btn" id="continueBtn5" onclick="nextStep(6)">
-                    Continue to Final Step <i class="fas fa-arrow-right"></i>
-                </button>
             </div>
 
-            <!-- Step 6 - Download -->
-            <div class="step-container" id="step6">
-                <div class="download-section">
-                    <div class="download-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h2 class="download-title">Premium Access Unlocked!</h2>
-                    <p>Congratulations! You've completed all premium advertisement engagements.</p>
-                    <p>Your CPM rate has been maximized to the highest tier.</p>
-                    
-                    <a href="https://otieu.com/4/10548540" class="download-btn" id="finalDownloadBtn" target="_blank">
-                        <i class="fas fa-download"></i> DOWNLOAD PREMIUM CONTENT
-                    </a>
-                    
-                    <div style="margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.15); border-radius: 10px;">
-                        <p style="font-size: 12px; margin-bottom: 5px;">Your direct access link:</p>
-                        <p style="font-weight: 700; font-size: 13px;">https://otieu.com/4/10548540</p>
-                    </div>
-                </div>
+            <div class="continue-section">
+                <button class="continue-btn" id="continueBtn5" onclick="goToStep(6)">
+                    Get Download Link <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+            </div>
+        </div>
 
-                <div class="stats-display">
-                    <p>Advertisement Performance: <span class="stats-highlight">ELITE TIER</span></p>
-                    <p>Estimated CPM Rate: <span class="stats-highlight">$18.75 - $24.50</span></p>
-                    <p>Engagement Score: <span class="stats-highlight">98/100</span></p>
+        <!-- Step 6 Content (Download) -->
+        <div class="steps-container" id="step6Content">
+            <div class="download-section" id="downloadSection">
+                <div class="download-icon">
+                    <i class="fas fa-gift"></i>
                 </div>
+                <h2 class="download-title">Congratulations!</h2>
+                <p>You have successfully completed all 6 steps.</p>
+                <p>Your download link is now available below.</p>
+                
+                <a href="https://otieu.com/4/10548540" class="download-link" target="_blank" id="finalDownloadLink">
+                    <i class="fas fa-download"></i> DOWNLOAD NOW
+                </a>
+                
+                <div class="link-display">
+                    <p>Direct download link:</p>
+                    <a href="https://otieu.com/4/10548540" target="_blank">https://otieu.com/4/10548540</a>
+                </div>
+            </div>
+
+            <div class="continue-section">
+                <button class="continue-btn active" onclick="restartProcess()" style="background: linear-gradient(90deg, #4f46e5, #7c3aed);">
+                    <i class="fas fa-redo btn-icon"></i> Start Again
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <p>Complete all steps to access premium content</p>
+            <div class="footer-note">
+                Ads play automatically - No clicks required<br>
+                Final link appears after step 6
             </div>
         </div>
     </div>
@@ -531,61 +622,97 @@
         // Configuration
         const totalSteps = 6;
         let currentStep = 1;
-        let adClicks = [0, 0, 0, 0, 0];
+        const stepTimes = [8, 10, 12, 9, 15, 0]; // Timer for each step
         let timers = {};
-        
+        const monetagLink = "https://otieu.com/4/10548540";
+
         // Initialize the page
         function initPage() {
             updateProgress();
-            startTimer(1, 10);
-            startTimer(2, 8);
-            startTimer(3, 12);
-            startTimer(4, 10);
-            startTimer(5, 15);
-            
-            // Disable all continue buttons initially
-            for (let i = 1; i <= totalSteps; i++) {
-                const btn = document.getElementById(`continueBtn${i}`);
-                if (btn) btn.classList.remove('active');
-            }
+            setupAutoRedirects();
+            startStepTimer(1);
         }
-        
-        // Update progress bar and text
+
+        // Update progress bar and indicators
         function updateProgress() {
-            const progressFill = document.getElementById('progressFill');
-            const stepText = document.getElementById('stepText');
-            
+            // Update progress bar
             const progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
-            progressFill.style.width = `${progressPercentage}%`;
-            
-            const stepTitles = [
-                "Step 1 of 6: View Premium Ad",
-                "Step 2 of 6: Click Luxury Offer",
-                "Step 3 of 6: Engage Travel Deal",
-                "Step 4 of 6: Premium Investment Ad",
-                "Step 5 of 6: Elite Wealth Service",
-                "Step 6 of 6: Download Unlocked"
-            ];
-            
-            if (stepText) {
-                stepText.textContent = stepTitles[currentStep - 1];
+            document.getElementById('progressBar').style.width = `${progressPercentage}%`;
+
+            // Update step dots
+            for (let i = 1; i <= totalSteps; i++) {
+                const stepDot = document.getElementById(`stepDot${i}`);
+                if (stepDot) {
+                    stepDot.classList.remove('active', 'completed');
+                    if (i < currentStep) {
+                        stepDot.classList.add('completed');
+                    } else if (i === currentStep) {
+                        stepDot.classList.add('active');
+                    }
+                }
             }
+
+            // Update step text
+            const stepTexts = [
+                "Step 1/6: Ad Playing Automatically",
+                "Step 2/6: Advertisement Playing",
+                "Step 3/6: Auto-play Advertisement",
+                "Step 4/6: Ad Playing",
+                "Step 5/6: Final Auto-play Ad",
+                "Step 6/6: Download Link Ready"
+            ];
+            document.getElementById('currentStepText').textContent = stepTexts[currentStep - 1];
         }
-        
-        // Start timer for a step
-        function startTimer(step, seconds) {
+
+        // Setup auto-redirect simulation
+        function setupAutoRedirects() {
+            // Simulate ad impressions (no clicks required)
+            console.log("Ads playing automatically - simulating impressions");
+            
+            // Track ad views automatically
+            setTimeout(() => {
+                simulateAdView(1);
+            }, 1000);
+        }
+
+        // Simulate ad view (for tracking purposes)
+        function simulateAdView(step) {
+            console.log(`Ad view simulated for step ${step}`);
+            
+            // In a real implementation, you would send this data to your analytics
+            const adData = {
+                step: step,
+                timestamp: new Date().toISOString(),
+                type: 'auto_play',
+                url: monetagLink
+            };
+            
+            // Store in localStorage for tracking
+            const adViews = JSON.parse(localStorage.getItem('adViews') || '[]');
+            adViews.push(adData);
+            localStorage.setItem('adViews', JSON.stringify(adViews));
+        }
+
+        // Start timer for a specific step
+        function startStepTimer(step) {
             const timerDisplay = document.getElementById(`timer${step}`);
             const continueBtn = document.getElementById(`continueBtn${step}`);
             
-            if (!timerDisplay || !continueBtn) return;
+            if (!timerDisplay || !continueBtn || stepTimes[step-1] === 0) return;
             
-            let timeLeft = seconds;
+            let timeLeft = stepTimes[step-1];
             updateTimerDisplay(timerDisplay, timeLeft);
+            
+            // Disable button initially
+            continueBtn.classList.remove('active');
             
             // Clear existing timer
             if (timers[step]) {
                 clearInterval(timers[step]);
             }
+            
+            // Simulate ad view for this step
+            simulateAdView(step);
             
             // Start new timer
             timers[step] = setInterval(() => {
@@ -598,10 +725,19 @@
                     
                     // Add visual feedback
                     continueBtn.style.animation = "pulse 1s 3";
+                    
+                    // Auto-progress to next step after delay (except for final step)
+                    if (step < 5) {
+                        setTimeout(() => {
+                            if (currentStep === step) {
+                                goToStep(step + 1);
+                            }
+                        }, 2000);
+                    }
                 }
             }, 1000);
         }
-        
+
         // Update timer display
         function updateTimerDisplay(timerDisplay, seconds) {
             if (!timerDisplay) return;
@@ -609,133 +745,108 @@
             const mins = Math.floor(seconds / 60);
             const secs = seconds % 60;
             timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
-        
-        // Track ad clicks
-        function trackAdClick(step) {
-            adClicks[step - 1]++;
             
-            // Visual feedback for ad click
-            const adCard = document.getElementById(`adCard${step}`);
-            if (adCard) {
-                adCard.style.transform = "scale(0.98)";
-                setTimeout(() => {
-                    adCard.style.transform = "";
-                }, 200);
-            }
-            
-            // Update CPM stats (simulated)
-            updateCpmStats();
-            
-            // Open monetag link
-            window.open('https://otieu.com/4/10548540', '_blank');
-            
-            return true;
-        }
-        
-        // Update CPM statistics
-        function updateCpmStats() {
-            const totalClicks = adClicks.reduce((a, b) => a + b, 0);
-            
-            // Simulate CPM increase based on engagement
-            const baseCpm = 18.75;
-            const engagementBonus = totalClicks * 1.25;
-            const estimatedCpm = baseCpm + engagementBonus;
-            
-            // Update stats display if on final step
-            if (currentStep === 6) {
-                const statsDisplay = document.querySelector('.stats-display');
-                if (statsDisplay) {
-                    const engagementScore = Math.min(100, 70 + (totalClicks * 6));
-                    statsDisplay.innerHTML = `
-                        <p>Advertisement Performance: <span class="stats-highlight">ELITE TIER</span></p>
-                        <p>Estimated CPM Rate: <span class="stats-highlight">$${estimatedCpm.toFixed(2)}</span></p>
-                        <p>Engagement Score: <span class="stats-highlight">${engagementScore}/100</span></p>
-                        <p>Total Ad Clicks: <span class="stats-highlight">${totalClicks}</span></p>
-                    `;
-                }
+            // Change color when time is running out
+            if (seconds <= 5) {
+                timerDisplay.style.color = "#ef4444";
+            } else {
+                timerDisplay.style.color = "#dc2626";
             }
         }
-        
-        // Navigate to next step
-        function nextStep(nextStepNum) {
+
+        // Navigate to specific step
+        function goToStep(stepNumber) {
             // Hide current step
-            document.getElementById(`step${currentStep}`).classList.remove('active');
+            document.getElementById(`step${currentStep}Content`).classList.remove('active');
             
-            // Show next step
-            document.getElementById(`step${nextStepNum}`).classList.add('active');
+            // Show new step
+            document.getElementById(`step${stepNumber}Content`).classList.add('active');
             
             // Update current step
-            currentStep = nextStepNum;
+            currentStep = stepNumber;
             
-            // Update progress display
+            // Update progress indicators
             updateProgress();
             
-            // If final step, update stats
-            if (nextStepNum === 6) {
-                updateCpmStats();
+            // Start timer for new step
+            if (stepTimes[stepNumber-1] > 0) {
+                startStepTimer(stepNumber);
+            }
+            
+            // For final step, show download section
+            if (stepNumber === 6) {
+                setTimeout(() => {
+                    document.getElementById('downloadSection').classList.add('active');
+                }, 500);
+            }
+            
+            // Simulate page redirect effect
+            simulatePageRedirect();
+        }
+
+        // Simulate page redirect effect
+        function simulatePageRedirect() {
+            const container = document.querySelector('.page-container');
+            container.style.opacity = "0.7";
+            container.style.transform = "scale(0.98)";
+            
+            setTimeout(() => {
+                container.style.opacity = "1";
+                container.style.transform = "scale(1)";
+            }, 300);
+            
+            // Simulate ad view for the new page
+            if (currentStep <= 5) {
+                simulateAdView(currentStep);
             }
         }
-        
+
+        // Restart the process
+        function restartProcess() {
+            // Hide current step
+            document.getElementById(`step${currentStep}Content`).classList.remove('active');
+            
+            // Reset to step 1
+            currentStep = 1;
+            document.getElementById('step1Content').classList.add('active');
+            
+            // Update progress
+            updateProgress();
+            
+            // Reset timers
+            for (let i = 1; i <= 5; i++) {
+                const timerDisplay = document.getElementById(`timer${i}`);
+                if (timerDisplay) {
+                    updateTimerDisplay(timerDisplay, stepTimes[i-1]);
+                }
+                
+                const continueBtn = document.getElementById(`continueBtn${i}`);
+                if (continueBtn) {
+                    continueBtn.classList.remove('active');
+                }
+                
+                if (timers[i]) {
+                    clearInterval(timers[i]);
+                }
+            }
+            
+            // Hide download section
+            document.getElementById('downloadSection').classList.remove('active');
+            
+            // Start timer for step 1
+            startStepTimer(1);
+        }
+
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', initPage);
-        
-        // Add hover effects to ad cards
-        document.addEventListener('DOMContentLoaded', function() {
-            const adCards = document.querySelectorAll('.ad-card');
-            adCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
-                    this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.12)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = '';
-                    this.style.boxShadow = '0 10px 25px rgba(0,0,0,0.08)';
-                });
-            });
-        });
+
+        // Auto-start the process
+        window.onload = function() {
+            // Simulate initial page load delay
+            setTimeout(() => {
+                console.log("Page loaded - starting auto-play ads process");
+            }, 500);
+        };
     </script>
-</body>
-</html>let current = 1;
-
-function startTimer(step){
-  let time = 45;
-  const t = document.getElementById("timer"+step);
-  const b = document.getElementById("btn"+step);
-
-  const x = setInterval(()=>{
-    time--;
-    t.innerText = "Please wait " + time + " seconds…";
-    if(time <= 0){
-      clearInterval(x);
-      t.innerText = "Verified ✓";
-      b.disabled = false;
-      b.classList.add("active");
-    }
-  },1000);
-}
-
-function openAd(){
-  // 💰 MONETAG DIRECT LINK (EARNING)
-  window.open("https://otieu.com/4/YOUR-ID","_blank");
-}
-
-function goNext(n){
-  openAd(); // 💰 ad opens every continue
-  document.getElementById("step"+current).classList.remove("active");
-  document.getElementById("step"+n).classList.add("active");
-  current = n;
-  startTimer(n);
-}
-
-function downloadAPK(){
-  openAd(); // 💰 last earning
-  window.location.href = "https://YOUR-APK-DIRECT-LINK.apk";
-}
-
-startTimer(1);
-</script>
-
 </body>
 </html>
