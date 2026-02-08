@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 99% Off Sale - Flipkart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f1f3f6;
+            color: #212121;
+        }
+        
+        /* Flipkart Header */
+        .flipkart-header {
+            background-color: #2874f0;
+            padding: 12px 0;
+            box-shadow: 0 1px 10px 0 rgba(0,0,0,.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .flipkart-logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: none;
+        }
+        
+        .flipkart-logo .yellow {
+            color: #ffe11b;
+        }
+        
+        .plus-logo {
+            color: #ffe11b;
+            font-size: 12px;
+            font-style: italic;
+            margin-left: 2px;
+            font-weight: 500;
+        }
+        
+        .search-container {
+            flex: 1;
+            max-width: 550px;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 2px;
+            font-size: 14px;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,.23);
+            outline: none;
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            background-color: #fff;
+            border: none;
+            padding: 0 20px;
+            color: #2874f0;
+            cursor: pointer;
+            border-radius: 0 2px 2px 0;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .header-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px 10px;
+        }
+        
+        .header-btn i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+        
+        .cart-btn {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: 0;
+            background-color: #ff6161;
+            color: white;
+            font-size: 12px;
+            padding: 1px 6px;
+            border-radius: 50%;
+            font-weight: 600;
+        }
+        
+        /* Deal Timer */
+        .deal-timer {
+            background: linear-gradient(to right, #ff6b6b, #ff3838);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .timer-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .time-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 4px;
+            min-width: 70px;
+        }
+        
+        .time-value {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .time-label {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .colon {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* Products Section */
+        .products-section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 16px;
+        }
+        
+        .section-title {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 2px;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+        }
+        
+        .section-title h1 {
+            color: #212121;
+            font-size: 24px;
+            font-weight: 500;
+        }
+        
+        .section-title p {
+            color: #878787;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        
+        .products-count {
+            color: #878787;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 15px;
+        }
+        
+        /* Product Card - Flipkart Style */
+        .product-card {
+            background-color: white;
+            border-radius: 2px;
+            padding: 15px;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+            transition: box-shadow 0.3s, transform 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 2px 16px 0 rgba(0,0,0,.2);
+            transform: translateY(-5px);
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #388e3c;
+            color: white;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 2px;
+            z-index: 2;
+        }
+        
+        .product-image {
+            text-align: center;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            max-height: 160px;
+            max-width: 100%;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-title {
+            color: #212121;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+            height: 40px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .price-container {
+            margin-bottom: 10px;
+        }
+        
+        .original-price {
+            color: #878787;
+            font-size: 14px;
+            text-decoration: line-through;
+        }
+        
+        .discount-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: #212121;
+            margin: 5px 0;
+        }
+        
+        .discount-price span {
+            font-size: 14px;
+            color: #388e3c;
+            font-weight: 500;
+        }
+        
+        .assured-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f5f9ff;
+            padding: 4px 8px;
+            border-radius: 2px;
+            margin-bottom: 15px;
+        }
+        
+        .assured-badge img {
+            height: 20px;
+            margin-right: 5px;
+        }
+        
+        .assured-badge span {
+            font-size: 12px;
+            color: #2874f0;
+            font-weight: 500;
+        }
+        
+        .buy-now-btn {
+            width: 100%;
+            background-color: #fb641b;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .buy-now-btn:hover {
+            background-color: #e55a17;
+        }
+        
+        /* No Results Message */
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: 2px;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+            grid-column: 1 / -1;
+        }
+        
+        .no-results i {
+            font-size: 50px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .no-results h3 {
+            color: #878787;
+            margin-bottom: 10px;
+        }
+        
+        .no-results p {
+            color: #878787;
+            font-size: 14px;
+        }
+        
+        /* Footer */
+        .flipkart-footer {
+            background-color: #172337;
+            color: white;
+            margin-top: 40px;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 14px;
+            color: #878787;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            border-top: 1px solid #454d5e;
+            padding-top: 20px;
+            text-align: center;
+            color: #878787;
+            font-size: 14px;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 10px;
+        }
+        
+        .page-btn {
+            padding: 8px 16px;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .page-btn.active {
+            background-color: #2874f0;
+            color: white;
+            border-color: #2874f0;
+        }
+        
+        .page-btn:hover:not(.active) {
+            background-color: #f5f5f5;
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #388e3c;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 2px;
+            box-shadow: 0 4px 12px rgba(0,0,0,.2);
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .search-container {
+                order: 3;
+                margin-top: 15px;
+                max-width: 100%;
+            }
+            
+            .timer-display {
+                gap: 10px;
+            }
+            
+            .time-box {
+                min-width: 60px;
+                padding: 6px 10px;
+            }
+            
+            .time-value {
+                font-size: 22px;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Flipkart Header -->
+    <header class="flipkart-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <a href="#" class="flipkart-logo">
+                    Flipkart<span class="yellow">.</span>
+                </a>
+                <div class="plus-logo">
+                    Plus
+                </div>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" class="search-box" id="search-input" placeholder="Search for iPhone, brands and more...">
+                <button class="search-btn" id="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <div class="header-actions">
+                <button class="header-btn">
+                    <i class="fas fa-user"></i>
+                    <span>Login</span>
+                </button>
+                <button class="header-btn">
+                    <i class="fas fa-gift"></i>
+                    <span>Offers</span>
+                </button>
+                <button class="header-btn cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Deal Timer -->
+    <div class="deal-timer">
+        <div class="timer-title">
+            <i class="fas fa-bolt"></i> FLASH SALE ENDS IN
+        </div>
+        <div class="timer-display">
+            <div class="time-box">
+                <div class="time-value" id="minutes">10</div>
+                <div class="time-label">MINUTES</div>
+            </div>
+            <div class="colon">:</div>
+            <div class="time-box">
+                <div class="time-value" id="seconds">00</div>
+                <div class="time-label">SECONDS</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Products Section -->
+    <div class="products-section">
+        <div class="section-title">
+            <h1>iPhone Sale - 99% Off on All Models</h1>
+            <p>Limited time offer! Grab your favorite iPhone at unbelievable prices</p>
+            <div class="products-count" id="products-count">Showing <span id="current-count">20</span> of <span id="total-count">100</span> products</div>
+        </div>
+        
+        <div class="products-grid" id="products-container">
+            <!-- Products will be loaded here -->
+        </div>
+        
+        <div class="pagination" id="pagination">
+            <!-- Pagination will be loaded here -->
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="flipkart-footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>ABOUT</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>HELP</h3>
+                    <ul>
+                        <li><a href="#">Payments</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Cancellation & Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>POLICY</h3>
+                    <ul>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Terms Of Use</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>SOCIAL</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 Flipkart. All rights reserved. This is a demo page for testing purposes only.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notification-text">Product added to cart!</span>
+    </div>
+
+    <script>
+        // iPhone data - 100 REAL MODELS with REAL iPhone images
+        const iphoneModels = [
+            // iPhone 15 Series
+            { id: 1, name: "Apple iPhone 15 Pro Max (Natural Titanium, 256GB)", originalPrice: "₹1,59,900", discount: "99% off", currentPrice: "₹499", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg" },
+            { id: 2, name: "Apple iPhone 15 Pro (Blue Titanium, 128GB)", originalPrice: "₹1,34,900", discount: "99% off", currentPrice: "₹489", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg" },
+            { id: 3, name: "Apple iPhone 15 (Black, 128GB)", originalPrice: "₹79,900", discount: "99% off", currentPrice: "₹478", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg" },
+            { id: 4, name: "Apple iPhone 15 (Blue, 256GB)", originalPrice: "₹89,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg" },
+            { id: 5, name: "Apple iPhone 15 Plus (Pink, 128GB)", originalPrice: "₹89,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-plus.jpg" },
+            { id: 6, name: "Apple iPhone 15 Plus (Green, 256GB)", originalPrice: "₹99,900", discount: "99% off", currentPrice: "₹495", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-plus.jpg" },
+            
+            // iPhone 14 Series
+            { id: 7, name: "Apple iPhone 14 Pro Max (Deep Purple, 128GB)", originalPrice: "₹1,39,900", discount: "99% off", currentPrice: "₹489", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max.jpg" },
+            { id: 8, name: "Apple iPhone 14 Pro (Gold, 256GB)", originalPrice: "₹1,29,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg" },
+            { id: 9, name: "Apple iPhone 14 (Blue, 128GB)", originalPrice: "₹79,900", discount: "99% off", currentPrice: "₹478", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg" },
+            { id: 10, name: "Apple iPhone 14 (Purple, 256GB)", originalPrice: "₹89,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg" },
+            { id: 11, name: "Apple iPhone 14 Plus (Starlight, 128GB)", originalPrice: "₹89,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-plus.jpg" },
+            { id: 12, name: "Apple iPhone 14 Plus (Midnight, 512GB)", originalPrice: "₹1,19,900", discount: "99% off", currentPrice: "₹495", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-plus.jpg" },
+            
+            // iPhone 13 Series
+            { id: 13, name: "Apple iPhone 13 Pro Max (Sierra Blue, 128GB)", originalPrice: "₹1,29,900", discount: "99% off", currentPrice: "₹479", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg" },
+            { id: 14, name: "Apple iPhone 13 Pro (Graphite, 256GB)", originalPrice: "₹1,19,900", discount: "99% off", currentPrice: "₹475", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg" },
+            { id: 15, name: "Apple iPhone 13 (Starlight, 128GB)", originalPrice: "₹69,900", discount: "99% off", currentPrice: "₹468", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg" },
+            { id: 16, name: "Apple iPhone 13 (Pink, 256GB)", originalPrice: "₹79,900", discount: "99% off", currentPrice: "₹476", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg" },
+            { id: 17, name: "Apple iPhone 13 Mini (Midnight, 128GB)", originalPrice: "₹59,900", discount: "99% off", currentPrice: "₹465", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg" },
+            { id: 18, name: "Apple iPhone 13 Mini (Green, 256GB)", originalPrice: "₹69,900", discount: "99% off", currentPrice: "₹475", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg" },
+            
+            // iPhone 12 Series
+            { id: 19, name: "Apple iPhone 12 Pro Max (Pacific Blue, 128GB)", originalPrice: "₹1,19,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg" },
+            { id: 20, name: "Apple iPhone 12 Pro (Gold, 256GB)", originalPrice: "₹1,09,900", discount: "99% off", currentPrice: "₹480", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro.jpg" },
+            { id: 21, name: "Apple iPhone 12 (Black, 64GB)", originalPrice: "₹65,900", discount: "99% off", currentPrice: "₹459", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg" },
+            { id: 22, name: "Apple iPhone 12 (White, 128GB)", originalPrice: "₹69,900", discount: "99% off", currentPrice: "₹465", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg" },
+            { id: 23, name: "Apple iPhone 12 Mini (Purple, 128GB)", originalPrice: "₹59,900", discount: "99% off", currentPrice: "₹455", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg" },
+            { id: 24, name: "Apple iPhone 12 Mini (Blue, 256GB)", originalPrice: "₹69,900", discount: "99% off", currentPrice: "₹475", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg" },
+            
+            // iPhone 11 Series
+            { id: 25, name: "Apple iPhone 11 Pro Max (Midnight Green, 64GB)", originalPrice: "₹1,09,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro-max.jpg" },
+            { id: 26, name: "Apple iPhone 11 Pro (Silver, 256GB)", originalPrice: "₹99,900", discount: "99% off", currentPrice: "₹480", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg" },
+            { id: 27, name: "Apple iPhone 11 (White, 64GB)", originalPrice: "₹54,900", discount: "99% off", currentPrice: "₹469", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg" },
+            { id: 28, name: "Apple iPhone 11 (Black, 128GB)", originalPrice: "₹59,900", discount: "99% off", currentPrice: "₹475", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg" },
+            { id: 29, name: "Apple iPhone 11 (Purple, 256GB)", originalPrice: "₹64,900", discount: "99% off", currentPrice: "₹480", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg" },
+            { id: 30, name: "Apple iPhone 11 (Green, 128GB)", originalPrice: "₹59,900", discount: "99% off", currentPrice: "₹475", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg" },
+            
+            // iPhone SE Series
+            { id: 31, name: "Apple iPhone SE (2022) (Red, 64GB)", originalPrice: "₹39,900", discount: "99% off", currentPrice: "₹438", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-se-2022.jpg" },
+            { id: 32, name: "Apple iPhone SE (2022) (Midnight, 128GB)", originalPrice: "₹44,900", discount: "99% off", currentPrice: "₹445", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-se-2022.jpg" },
+            { id: 33, name: "Apple iPhone SE (2022) (Starlight, 256GB)", originalPrice: "₹54,900", discount: "99% off", currentPrice: "₹455", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-se-2022.jpg" },
+            { id: 34, name: "Apple iPhone SE (2020) (Black, 64GB)", originalPrice: "₹34,900", discount: "99% off", currentPrice: "₹435", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-se-2020.jpg" },
+            { id: 35, name: "Apple iPhone SE (2020) (White, 128GB)", originalPrice: "₹39,900", discount: "99% off", currentPrice: "₹440", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-se-2020.jpg" },
+            { id: 36, name: "Apple iPhone SE (2020) (Red, 256GB)", originalPrice: "₹49,900", discount: "99% off", currentPrice: "₹450", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-se-2020.jpg" },
+            
+            // iPhone X Series
+            { id: 37, name: "Apple iPhone XS Max (Gold, 64GB)", originalPrice: "₹99,900", discount: "99% off", currentPrice: "₹480", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xs-max.jpg" },
+            { id: 38, name: "Apple iPhone XS (Silver, 256GB)", originalPrice: "₹94,900", discount: "99% off", currentPrice: "₹475", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xs.jpg" },
+            { id: 39, name: "Apple iPhone XR (Coral, 128GB)", originalPrice: "₹49,900", discount: "99% off", currentPrice: "₹455", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xr.jpg" },
+            { id: 40, name: "Apple iPhone XR (Blue, 64GB)", originalPrice: "₹44,900", discount: "99% off", currentPrice: "₹450", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xr.jpg" },
+            { id: 41, name: "Apple iPhone XR (Yellow, 256GB)", originalPrice: "₹59,900", discount: "99% off", currentPrice: "₹465", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xr.jpg" },
+            { id: 42, name: "Apple iPhone X (Space Gray, 64GB)", originalPrice: "₹79,900", discount: "99% off", currentPrice: "₹470", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-x.jpg" },
+            
+            // iPhone 8 Series
+            { id: 43, name: "Apple iPhone 8 Plus (Gold, 64GB)", originalPrice: "₹59,900", discount: "99% off", currentPrice: "₹460", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8-plus.jpg" },
+            { id: 44, name: "Apple iPhone 8 Plus (Silver, 256GB)", originalPrice: "₹74,900", discount: "99% off", currentPrice: "₹475", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8-plus.jpg" },
+            { id: 45, name: "Apple iPhone 8 (Red, 64GB)", originalPrice: "₹44,900", discount: "99% off", currentPrice: "₹445", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8.jpg" },
+            { id: 46, name: "Apple iPhone 8 (Space Gray, 128GB)", originalPrice: "₹49,900", discount: "99% off", currentPrice: "₹450", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8.jpg" },
+            
+            // iPhone 7 Series
+            { id: 47, name: "Apple iPhone 7 Plus (Jet Black, 32GB)", originalPrice: "₹39,900", discount: "99% off", currentPrice: "₹440", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-7-plus.jpg" },
+            { id: 48, name: "Apple iPhone 7 Plus (Rose Gold, 128GB)", originalPrice: "₹49,900", discount: "99% off", currentPrice: "₹450", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-7-plus.jpg" },
+            { id: 49, name: "Apple iPhone 7 (Black, 32GB)", originalPrice: "₹29,900", discount: "99% off", currentPrice: "₹430", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-7.jpg" },
+            { id: 50, name: "Apple iPhone 7 (Gold, 128GB)", originalPrice: "₹39,900", discount: "99% off", currentPrice: "₹440", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-7.jpg" },
+            
+            // iPhone 6 Series
+            { id: 51, name: "Apple iPhone 6s Plus (Space Gray, 32GB)", originalPrice: "₹29,900", discount: "99% off", currentPrice: "₹425", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-6s-plus.jpg" },
+            { id: 52, name: "Apple iPhone 6s Plus (Silver, 128GB)", originalPrice: "₹39,900", discount: "99% off", currentPrice: "₹435", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-6s-plus.jpg" },
+            { id: 53, name: "Apple iPhone 6s (Rose Gold, 32GB)", originalPrice: "₹24,900", discount: "99% off", currentPrice: "₹420", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-6s.jpg" },
+            { id: 54, name: "Apple iPhone 6s (Gold, 64GB)", originalPrice: "₹29,900", discount: "99% off", currentPrice: "₹425", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-6s.jpg" },
+            
+            // More iPhone 14 variants
+            { id: 55, name: "Apple iPhone 14 Pro (Space Black, 128GB)", originalPrice: "₹1,29,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg" },
+            { id: 56, name: "Apple iPhone 14 Pro (Silver, 512GB)", originalPrice: "₹1,59,900", discount: "99% off", currentPrice: "₹495", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg" },
+            { id: 57, name: "Apple iPhone 14 (Starlight, 128GB)", originalPrice: "₹79,900", discount: "99% off", currentPrice: "₹478", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg" },
+            { id: 58, name: "Apple iPhone 14 (Midnight, 256GB)", originalPrice: "₹89,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg" },
+            { id: 59, name: "Apple iPhone 14 Plus (Blue, 128GB)", originalPrice: "₹89,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-plus.jpg" },
+            { id: 60, name: "Apple iPhone 14 Plus (Red, 512GB)", originalPrice: "₹1,19,900", discount: "99% off", currentPrice: "₹495", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-plus.jpg" },
+            
+            // More iPhone 13 variants
+            { id: 61, name: "Apple iPhone 13 Pro (Gold, 128GB)", originalPrice: "₹1,19,900", discount: "99% off", currentPrice: "₹475", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg" },
+            { id: 62, name: "Apple iPhone 13 Pro Max (Graphite, 512GB)", originalPrice: "₹1,59,900", discount: "99% off", currentPrice: "₹495", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg" },
+            { id: 63, name: "Apple iPhone 13 (Blue, 128GB)", originalPrice: "₹69,900", discount: "99% off", currentPrice: "₹468", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg" },
+            { id: 64, name: "Apple iPhone 13 (Green, 256GB)", originalPrice: "₹79,900", discount: "99% off", currentPrice: "₹476", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg" },
+            { id: 65, name: "Apple iPhone 13 Mini (Blue, 128GB)", originalPrice: "₹59,900", discount: "99% off", currentPrice: "₹465", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg" },
+            { id: 66, name: "Apple iPhone 13 Mini (Pink, 512GB)", originalPrice: "₹84,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg" },
+            
+            // More iPhone 12 variants
+            { id: 67, name: "Apple iPhone 12 Pro Max (Graphite, 256GB)", originalPrice: "₹1,29,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max-.jpg" },
+            { id: 68, name: "Apple iPhone 12 Pro (Pacific Blue, 512GB)", originalPrice: "₹1,39,900", discount: "99% off", currentPrice: "₹495", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro.jpg" },
+            { id: 69, name: "Apple iPhone 12 (Green, 128GB)", originalPrice: "₹69,900", discount: "99% off", currentPrice: "₹465", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg" },
+            { id: 70, name: "Apple iPhone 12 (Purple, 256GB)", originalPrice: "₹79,900", discount: "99% off", currentPrice: "₹475", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg" },
+            { id: 71, name: "Apple iPhone 12 Mini (Black, 64GB)", originalPrice: "₹54,900", discount: "99% off", currentPrice: "₹455", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg" },
+            { id: 72, name: "Apple iPhone 12 Mini (White, 128GB)", originalPrice: "₹59,900", discount: "99% off", currentPrice: "₹460", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg" },
+            
+            // More iPhone 11 variants
+            { id: 73, name: "Apple iPhone 11 Pro Max (Gold, 256GB)", originalPrice: "₹1,19,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro-max.jpg" },
+            { id: 74, name: "Apple iPhone 11 Pro (Space Gray, 512GB)", originalPrice: "₹1,29,900", discount: "99% off", currentPrice: "₹495", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg" },
+            { id: 75, name: "Apple iPhone 11 (Yellow, 64GB)", originalPrice: "₹54,900", discount: "99% off", currentPrice: "₹469", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg" },
+            { id: 76, name: "Apple iPhone 11 (Red, 128GB)", originalPrice: "₹59,900", discount: "99% off", currentPrice: "₹475", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg" },
+            
+            // iPhone SE 3rd Gen variants
+            { id: 77, name: "Apple iPhone SE 3 (Midnight, 64GB)", originalPrice: "₹39,900", discount: "99% off", currentPrice: "₹438", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-se-2022.jpg" },
+            { id: 78, name: "Apple iPhone SE 3 (Starlight, 128GB)", originalPrice: "₹44,900", discount: "99% off", currentPrice: "₹445", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-se-2022.jpg" },
+            { id: 79, name: "Apple iPhone SE 3 (Red, 256GB)", originalPrice: "₹54,900", discount: "99% off", currentPrice: "₹455", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-se-2022.jpg" },
+            
+            // iPhone XS/XS Max variants
+            { id: 80, name: "Apple iPhone XS Max (Space Gray, 256GB)", originalPrice: "₹1,09,900", discount: "99% off", currentPrice: "₹485", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xs-max.jpg" },
+            { id: 81, name: "Apple iPhone XS (Gold, 64GB)", originalPrice: "₹89,900", discount: "99% off", currentPrice: "₹475", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xs.jpg" },
+            
+            // iPhone XR variants
+            { id: 82, name: "Apple iPhone XR (White, 128GB)", originalPrice: "₹49,900", discount: "99% off", currentPrice: "₹455", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xr.jpg" },
+            { id: 83, name: "Apple iPhone XR (Black, 64GB)", originalPrice: "₹44,900", discount: "99% off", currentPrice: "₹450", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xr.jpg" },
+            { id: 84, name: "Apple iPhone XR (Product Red, 256GB)", originalPrice: "₹59,900", discount: "99% off", currentPrice: "₹465", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xr.jpg" },
+            
+            // iPhone X variants
+            { id: 85, name: "Apple iPhone X (Silver, 256GB)", originalPrice: "₹94,900", discount: "99% off", currentPrice: "₹480", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-x.jpg" },
+            
+            // iPhone 8/8 Plus variants
+            { id: 86, name: "Apple iPhone 8 Plus (Space Gray, 128GB)", originalPrice: "₹64,900", discount: "99% off", currentPrice: "₹465", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8-plus.jpg" },
+            { id: 87, name: "Apple iPhone 8 (Gold, 64GB)", originalPrice: "₹44,900", discount: "99% off", currentPrice: "₹445", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8.jpg" },
+            
+            // iPhone 7/7 Plus variants
+            { id: 88, name: "Apple iPhone 7 Plus (Black, 32GB)", originalPrice: "₹39,900", discount: "99% off", currentPrice: "₹440", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-7-plus.jpg" },
+            { id: 89, name: "Apple iPhone 7 (Silver, 128GB)", originalPrice: "₹39,900", discount: "99% off", currentPrice: "₹440", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-7.jpg" },
+            { id: 90, name: "Apple iPhone 7 (Rose Gold, 32GB)", originalPrice: "₹29,900", discount: "99% off", currentPrice: "₹430", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-7.jpg" },
+            
+            // iPhone 6s/6s Plus variants
+            { id: 91, name: "Apple iPhone 6s Plus (Rose Gold, 64GB)", originalPrice: "₹34,900", discount: "99% off", currentPrice: "₹435", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-6s-plus.jpg" },
+            { id: 92, name: "Apple iPhone 6s (Space Gray, 32GB)", originalPrice: "₹24,900", discount: "99% off", currentPrice: "₹420", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-6s.jpg" },
+            { id: 93, name: "Apple iPhone 6s (Silver, 128GB)", originalPrice: "₹34,900", discount: "99% off", currentPrice: "₹435", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-6s.jpg" },
+            
+            // iPhone 6/6 Plus variants
+            { id: 94, name: "Apple iPhone 6 Plus (Space Gray, 16GB)", originalPrice: "₹24,900", discount: "99% off", currentPrice: "₹420", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-6-plus.jpg" },
+            { id: 95, name: "Apple iPhone 6 (Gold, 64GB)", originalPrice: "₹29,900", discount: "99% off", currentPrice: "₹425", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-6.jpg" },
+            { id: 96, name: "Apple iPhone 6 (Silver, 128GB)", originalPrice: "₹34,900", discount: "99% off", currentPrice: "₹435", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-6.jpg" },
+            
+            // iPhone 5s variants
+            { id: 97, name: "Apple iPhone 5s (Space Gray, 16GB)", originalPrice: "₹19,900", discount: "99% off", currentPrice: "₹415", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-5s.jpg" },
+            { id: 98, name: "Apple iPhone 5s (Gold, 32GB)", originalPrice: "₹24,900", discount: "99% off", currentPrice: "₹420", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-5s.jpg" },
+            { id: 99, name: "Apple iPhone 5s (Silver, 64GB)", originalPrice: "₹29,900", discount: "99% off", currentPrice: "₹425", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-5s.jpg" },
+            
+            // iPhone 5c variants
+            { id: 100, name: "Apple iPhone 5c (Blue, 8GB)", originalPrice: "₹14,900", discount: "99% off", currentPrice: "₹410", assured: true, img: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-5c.jpg" }
+        ];
+
+        // Pagination variables
+        let currentPage = 1;
+        const productsPerPage = 20;
+        let filteredProducts = [...iphoneModels];
+        let cartCount = 0;
+        let searchTimeout;
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            setupEventListeners();
+            startCountdownTimer();
+            updateProductsCount();
+        });
+
+        // Render products based on current page
+        function renderProducts() {
+            const productsContainer = document.getElementById('products-container');
+            productsContainer.innerHTML = '';
+            
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(startIndex, endIndex);
+            
+            if (productsToShow.length === 0) {
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.innerHTML = `
+                    <i class="fas fa-search"></i>
+                    <h3>No iPhones Found</h3>
+                    <p>Try searching with different keywords or browse all iPhones</p>
+                `;
+                productsContainer.appendChild(noResults);
+            } else {
+                productsToShow.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    
+                    // Create Flipkart assured badge SVG
+                    const assuredSVG = `<svg width="53" height="20" viewBox="0 0 53 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.2 0H0V20H13.2V0Z" fill="#2874F0"/>
+                        <path d="M52.9999 0H39.7999V20H52.9999V0Z" fill="#2874F0"/>
+                        <path d="M26.5 0H13.3V20H26.5V0Z" fill="#2874F0"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M26.5 0H39.7V20H26.5V0Z" fill="#2874F0"/>
+                        <path d="M22.3 13.5L19.1 10.3L17 12.4L22.3 17.7L31.4 8.6L29.3 6.5L22.3 13.5Z" fill="white"/>
+                    </svg>`;
+                    
+                    productCard.innerHTML = `
+                        <div class="discount-badge">${product.discount}</div>
+                        <div class="product-image">
+                            <img src="${product.img}" alt="${product.name}" onerror="this.src='https://img.icons8.com/color/96/000000/iphone.png'">
+                        </div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="price-container">
+                            <div class="original-price">${product.originalPrice}</div>
+                            <div class="discount-price">${product.currentPrice} <span>${product.discount}</span></div>
+                        </div>
+                        ${product.assured ? 
+                            `<div class="assured-badge">
+                                ${assuredSVG}
+                                <span>Flipkart Assured</span>
+                            </div>` 
+                            : ''
+                        }
+                        <button class="buy-now-btn" data-id="${product.id}">
+                            <i class="fas fa-bolt"></i> BUY NOW
+                        </button>
+                    `;
+                    
+                    productsContainer.appendChild(productCard);
+                });
+            }
+            
+            renderPagination();
+            updateProductsCount();
+        }
+
+        // Update products count display
+        function updateProductsCount() {
+            const totalCount = filteredProducts.length;
+            const currentCount = Math.min(totalCount, productsPerPage);
+            const startIndex = (currentPage - 1) * productsPerPage + 1;
+            const endIndex = Math.min(startIndex + currentCount - 1, totalCount);
+            
+            document.getElementById('total-count').textContent = totalCount;
+            document.getElementById('current-count').textContent = `${startIndex}-${endIndex}`;
+        }
+
+        // Render pagination buttons
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = '';
+            
+            if (totalPages <= 1) return;
+            
+            // Previous button
+            const prevButton = document.createElement('button');
+            prevButton.className = 'page-btn';
+            prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            prevButton.disabled = currentPage === 1;
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderProducts();
+                    window.scrollTo({ top: 400, behavior: 'smooth' });
+                }
+            });
+            paginationContainer.appendChild(prevButton);
+            
+            // Page buttons
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = startPage + maxVisiblePages - 1;
+            
+            if (endPage > totalPages) {
+                endPage = totalPages;
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.className = 'page-btn';
+                pageButton.textContent = i;
+                if (i === currentPage) {
+                    pageButton.classList.add('active');
+                }
+                pageButton.addEventListener('click', () => {
+                    currentPage = i;
+                    renderProducts();
+                    window.scrollTo({ top: 400, behavior: 'smooth' });
+                });
+                paginationContainer.appendChild(pageButton);
+            }
+            
+            // Next button
+            const nextButton = document.createElement('button');
+            nextButton.className = 'page-btn';
+            nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderProducts();
+                    window.scrollTo({ top: 400, behavior: 'smooth' });
+                }
+            });
+            paginationContainer.appendChild(nextButton);
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Live search functionality with debounce
+            document.getElementById('search-input').addEventListener('input', function(e) {
+                clearTimeout(searchTimeout);
+                
+                searchTimeout = setTimeout(() => {
+                    const searchTerm = e.target.value.toLowerCase().trim();
+                    
+                    if (searchTerm === '') {
+                        filteredProducts = [...iphoneModels];
+                    } else {
+                        filteredProducts = iphoneModels.filter(product => 
+                            product.name.toLowerCase().includes(searchTerm) ||
+                            product.currentPrice.toLowerCase().includes(searchTerm) ||
+                            product.originalPrice.toLowerCase().includes(searchTerm)
+                        );
+                    }
+                    
+                    currentPage = 1;
+                    renderProducts();
+                }, 300); // 300ms debounce delay
+            });
+            
+            // Search button
+            document.getElementById('search-button').addEventListener('click', function() {
+                const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+                
+                if (searchTerm === '') {
+                    filteredProducts = [...iphoneModels];
+                } else {
+                    filteredProducts = iphoneModels.filter(product => 
+                        product.name.toLowerCase().includes(searchTerm) ||
+                        product.currentPrice.toLowerCase().includes(searchTerm) ||
+                        product.originalPrice.toLowerCase().includes(searchTerm)
+                    );
+                }
+                
+                currentPage = 1;
+                renderProducts();
+            });
+            
+            // Buy Now buttons (event delegation)
+            document.getElementById('products-container').addEventListener('click', function(e) {
+                if (e.target.classList.contains('buy-now-btn') || e.target.closest('.buy-now-btn')) {
+                    const button = e.target.classList.contains('buy-now-btn') ? e.target : e.target.closest('.buy-now-btn');
+                    const productId = button.getAttribute('data-id');
+                    buyNow(productId);
+                }
+            });
+            
+            // Press Enter to search
+            document.getElementById('search-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    document.getElementById('search-button').click();
+                }
+            });
+        }
+
+        // Buy Now function - Direct redirect to payment page
+        function buyNow(productId) {
+            const product = iphoneModels.find(p => p.id == productId);
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            const cartCountElement = document.querySelector('.cart-count');
+            
+            // Update cart count
+            cartCount++;
+            cartCountElement.textContent = cartCount;
+            
+            // Show notification
+            notificationText.textContent = `Redirecting to payment for ${product.name.substring(0, 30)}...`;
+            notification.style.display = 'flex';
+            
+            // After 1 second, redirect to payment page
+            setTimeout(() => {
+                window.location.href = 'test_help_payment.html';
+            }, 1000);
+        }
+
+        // Countdown timer (10 minutes)
+        function startCountdownTimer() {
+            let minutes = 10;
+            let seconds = 0;
+            
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+            
+            const timerInterval = setInterval(() => {
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        clearInterval(timerInterval);
+                        // Timer ended
+                        document.querySelector('.deal-timer').innerHTML = '<div class="timer-title">FLASH SALE ENDED</div>';
+                        return;
+                    }
+                    minutes--;
+                    seconds = 59;
+                } else {
+                    seconds--;
+                }
+                
+                // Update display
+                minutesElement.textContent = minutes.toString().padStart(2, '0');
+                secondsElement.textContent = seconds.toString().padStart(2, '0');
+                
+                // Change color when less than 2 minutes
+                if (minutes < 2) {
+                    document.querySelector('.deal-timer').style.background = 'linear-gradient(to right, #ff3838, #c23636)';
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
